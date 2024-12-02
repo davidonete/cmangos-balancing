@@ -6,21 +6,21 @@ List of changes:
 	- Paladin
 		- Added Crusader Strike (33393): https://www.wowhead.com/wotlk/spell=35395
 		- Added Hand of Reckoning (33395): https://www.wowhead.com/wotlk/spell=62124
-		- Modified Benediction (20101, 20102, 20103, 20104, 20105) to increase mana reduction up to 30%
-		- Modified Holy Shield (20925, 20927, 20928) to increase block chance to 50% and reduce a 50% the mana cost
-		- Modified Consecration (26573, 20116, 20922, 20923, 20924) to reduce mana cost a 50%
-		- Modified Blessings increase duration a 100%
-		- Modified Hammer of Wrath (24239, 24274, 24275) cast time instant
-		- Modified Judgement different debuffs can be stacked
+		- Modified Benediction talent to increase mana reduction up to 30%
+		- Modified Holy Shield spell to increase block chance to 50% and reduce a 50% the mana cost
+		- Modified Consecration spell to reduce mana cost 50%
+		- Modified all blessing spells to increase duration a 100%
+		- Modified Hammer of Wrath spell to remove cast time
+		- Modified Judgement spells so different debuffs can be placed on the same target
 	- Druid
 		- Added Starfall (33397): https://www.wowhead.com/classic/spell=439748
-		- Modified Natural Shapeshifter (16833, 16834, 16835) to increase mana reduction up to 60%
-		- Modified Tiger's Fury (5217, 6793, 9845, 9846) to remove energy cost and add a 30 seconds cooldown
-		- Modified Savage Fury (16998, 16999) will also increase bleed damage up to a 30%
+		- Modified Natural Shapeshifter talent to increase mana reduction up to 60%
+		- Modified Tiger's Fury spell to remove energy cost and add a 30 seconds cooldown
+		- Modified Savage Fury talen will also increase bleed damage up to a 30%
 	- Shaman
-		- Modified Convection (16039, 16109, 16110, 16111, 16112) to increase mana reduction up to 30%
+		- Modified Convection talent to increase mana reduction up to 30%
 	- Hunter
-		- Modified Efficiency (19416, 19417, 19418, 19419, 19420) to increase mana reduction up to 30%
+		- Modified Efficiency talent to increase mana reduction up to 30%
 
 # Available Cores
 Classic
