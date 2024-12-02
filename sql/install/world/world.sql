@@ -25,6 +25,13 @@ UPDATE `spell_template` SET `ManaCost`= 75,  `EffectBasePoints1`= 49 WHERE `Id`=
 UPDATE `spell_template` SET `ManaCost`= 97,  `EffectBasePoints1`= 49 WHERE `Id`= 20927;
 UPDATE `spell_template` SET `ManaCost`= 120, `EffectBasePoints1`= 49 WHERE `Id`= 20928;
 
+-- Consecration reduce mana cost a 50%
+UPDATE `spell_template` SET `ManaCost`= 67 WHERE  `Id`= 26573;
+UPDATE `spell_template` SET `ManaCost`= 117 WHERE `Id`= 20116;
+UPDATE `spell_template` SET `ManaCost`= 160 WHERE `Id`= 20922;
+UPDATE `spell_template` SET `ManaCost`= 217 WHERE `Id`= 20923;
+UPDATE `spell_template` SET `ManaCost`= 282 WHERE `Id`= 20924;
+
 -- Items
 SET @START_ITEM_ID := 25819;
 SET @END_ITEM_ID := @START_ITEM_ID + 3;

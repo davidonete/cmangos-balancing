@@ -12,6 +12,12 @@ UPDATE `spell_template` SET `ManaCost`= 150, `EffectBasePoints1`= 29 WHERE `Id`=
 UPDATE `spell_template` SET `ManaCost`= 195, `EffectBasePoints1`= 29 WHERE `Id`= 20927;
 UPDATE `spell_template` SET `ManaCost`= 240, `EffectBasePoints1`= 29 WHERE `Id`= 20928;
 
+UPDATE `spell_template` SET `ManaCost`= 135 WHERE `Id`= 26573;
+UPDATE `spell_template` SET `ManaCost`= 235 WHERE `Id`= 20116;
+UPDATE `spell_template` SET `ManaCost`= 320 WHERE `Id`= 20922;
+UPDATE `spell_template` SET `ManaCost`= 435 WHERE `Id`= 20923;
+UPDATE `spell_template` SET `ManaCost`= 565 WHERE `Id`= 20924;
+
 SET @START_ITEM_ID := 25819;
 SET @END_ITEM_ID := @START_ITEM_ID + 3;
 DELETE FROM `item_template` WHERE `entry` BETWEEN  @START_ITEM_ID AND @END_ITEM_ID;
