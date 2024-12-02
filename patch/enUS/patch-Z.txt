@@ -1,0 +1,16 @@
+Description:
+Patch for the Cmangos balancing module (https://github.com/davidonete/cmangos_balancing) which contains extra spells and items to balancing classes
+
+Client version:
+1.12.1 (5875)
+
+Locale:
+enUS
+
+Changes
+- Spells:
+	- Paladin
+		- Added Crusader Strike (33393): https://www.wowhead.com/wotlk/spell=35395
+		- Added Hand of Reckoning (33395): https://www.wowhead.com/wotlk/spell=62124
+	- Druid
+		- Added Starfall (33397): https://www.wowhead.com/classic/spell=439748
