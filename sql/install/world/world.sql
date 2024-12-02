@@ -14,11 +14,16 @@ INSERT INTO `spell_template`            (`Id`,             `School`, `Category`,
 
 -- Paladin
 -- Benediction upgrade from 15% to 30%
-UPDATE `spell_template` SET `EffectBasePoints1`=-7  WHERE `Id`=20101;
-UPDATE `spell_template` SET `EffectBasePoints1`=-13 WHERE `Id`=20102;
-UPDATE `spell_template` SET `EffectBasePoints1`=-19 WHERE `Id`=20103;
-UPDATE `spell_template` SET `EffectBasePoints1`=-25 WHERE `Id`=20104;
-UPDATE `spell_template` SET `EffectBasePoints1`=-31 WHERE `Id`=20105;
+UPDATE `spell_template` SET `EffectBasePoints1`= -7  WHERE `Id`= 20101;
+UPDATE `spell_template` SET `EffectBasePoints1`= -13 WHERE `Id`= 20102;
+UPDATE `spell_template` SET `EffectBasePoints1`= -19 WHERE `Id`= 20103;
+UPDATE `spell_template` SET `EffectBasePoints1`= -25 WHERE `Id`= 20104;
+UPDATE `spell_template` SET `EffectBasePoints1`= -31 WHERE `Id`= 20105;
+
+-- Holy Shield increase block chance to 50% and reduce a 50% the mana cost
+UPDATE `spell_template` SET `ManaCost`= 75,  `EffectBasePoints1`= 49 WHERE `Id`= 20925;
+UPDATE `spell_template` SET `ManaCost`= 97,  `EffectBasePoints1`= 49 WHERE `Id`= 20927;
+UPDATE `spell_template` SET `ManaCost`= 120, `EffectBasePoints1`= 49 WHERE `Id`= 20928;
 
 -- Items
 SET @START_ITEM_ID := 25819;

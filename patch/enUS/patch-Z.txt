@@ -13,5 +13,6 @@ Changes
 		- Added Crusader Strike (33393): https://www.wowhead.com/wotlk/spell=35395
 		- Added Hand of Reckoning (33395): https://www.wowhead.com/wotlk/spell=62124
 		- Modified Benediction (20101, 20102, 20103, 20104, 20105) to increase mana reduction up to 30%
+		- Modified Holy Shield (20925, 20927, 20928) to increase block chance to 50% and reduce a 50% the mana cost
 	- Druid
 		- Added Starfall (33397): https://www.wowhead.com/classic/spell=439748
