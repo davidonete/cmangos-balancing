@@ -20,3 +20,4 @@ Changes
 		- Modified Judgement different debuffs can be stacked
 	- Druid
 		- Added Starfall (33397): https://www.wowhead.com/classic/spell=439748
+		- Modified Natural Shapeshifter (16833, 16834, 16835) to increase mana reduction up to 60%

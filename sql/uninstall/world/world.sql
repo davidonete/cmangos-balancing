@@ -27,6 +27,10 @@ UPDATE `spell_template` SET `SpellFamilyFlags` = 524288 WHERE Id = 20185 OR Id =
 UPDATE `spell_template` SET `SpellFamilyFlags` = 1048576 WHERE Id = 20184;
 UPDATE `spell_template` SET `SpellFamilyFlags` = 536870912 WHERE Id = 20188 OR Id = 20300 OR Id = 20301 OR Id = 20302 OR Id = 20303 OR Id = 21183;
 
+UPDATE `spell_template` SET `EffectBasePoints1`= -11 WHERE `Id` = 16833;
+UPDATE `spell_template` SET `EffectBasePoints1`= -21 WHERE `Id` = 16834;
+UPDATE `spell_template` SET `EffectBasePoints1`= -31 WHERE `Id` = 16835;
+
 SET @START_ITEM_ID := 25819;
 SET @END_ITEM_ID := @START_ITEM_ID + 3;
 DELETE FROM `item_template` WHERE `entry` BETWEEN  @START_ITEM_ID AND @END_ITEM_ID;
