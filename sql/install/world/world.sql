@@ -36,6 +36,9 @@ UPDATE `spell_template` SET `ManaCost`= 282 WHERE `Id`= 20924;
 UPDATE `spell_template` SET `DurationIndex`= 30 WHERE `Id`= 25898 OR `Id` = 25890 OR `Id` = 25782 OR `Id` = 25916 OR `Id` = 25895 OR `Id` = 25899 OR `Id` = 25894  OR `Id` = 25918;
 UPDATE `spell_template` SET `DurationIndex`= 6 WHERE `Id`= 20217 OR `Id` = 19977 OR `Id` = 19978 OR `Id` = 19979 OR `Id` = 19740 OR `Id` = 19834 OR `Id` = 19835  OR `Id` = 19836 OR `Id` = 19837 OR `Id` = 19838 OR `Id` = 1038 OR `Id` = 20911 OR `Id` = 20912 OR `Id` = 20913  OR `Id` = 20914 OR `Id` = 19742 OR `Id` = 19850 OR `Id` = 19852 OR `Id` = 19853 OR `Id` = 19854  OR `Id` = 25290;
 
+-- Hammer of Wrath cast time instant
+UPDATE `spell_template` SET `CastingTimeIndex` = 1 WHERE `Id` = 24239 OR `Id` = 24274 OR `Id` = 24275;
+
 -- Items
 SET @START_ITEM_ID := 25819;
 SET @END_ITEM_ID := @START_ITEM_ID + 3;
