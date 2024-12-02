@@ -8,5 +8,8 @@ namespace cmangos_module
     public:
         BalancingModuleConfig();
         bool OnLoad() override;
+
+    public:
+        bool enabled;
     };
 }
