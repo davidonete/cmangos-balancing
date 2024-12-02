@@ -57,6 +57,14 @@ UPDATE `spell_template` SET `EffectBasePoints1`= 29, `EffectBasePoints2`= 29 WHE
 UPDATE `spell_template` SET `SpellFamilyFlags`= 8392704 WHERE `Id`= 1079 OR `Id`= 9492 OR `Id`= 9493 OR `Id`= 9752 OR `Id`= 9894 OR `Id`= 9896; -- Rip
 UPDATE `spell_template` SET `SpellFamilyName`= 7, `SpellFamilyFlags`= 4096 WHERE `Id`= 9007 OR `Id`= 9824 OR `Id`= 9826; -- Pounce
 
+-- Shaman
+-- Convection upgrade from 10% to 30%
+UPDATE `spell_template` SET `EffectBasePoints1`= -7  WHERE `Id`= 16039;
+UPDATE `spell_template` SET `EffectBasePoints1`= -13 WHERE `Id`= 16109;
+UPDATE `spell_template` SET `EffectBasePoints1`= -19 WHERE `Id`= 16110;
+UPDATE `spell_template` SET `EffectBasePoints1`= -25 WHERE `Id`= 16111;
+UPDATE `spell_template` SET `EffectBasePoints1`= -31 WHERE `Id`= 16112;
+
 -- Items
 SET @START_ITEM_ID := 25819;
 SET @END_ITEM_ID := @START_ITEM_ID + 3;

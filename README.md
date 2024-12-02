@@ -17,6 +17,8 @@ List of changes:
 		- Modified Natural Shapeshifter (16833, 16834, 16835) to increase mana reduction up to 60%
 		- Modified Tiger's Fury (5217, 6793, 9845, 9846) to remove energy cost and add a 30 seconds cooldown
 		- Modified Savage Fury (16998, 16999) will also increase bleed damage up to a 30%
+	- Shaman
+		- Modified Convection (16039, 16109, 16110, 16111, 16112) to increase mana reduction up to 30%
 
 # Available Cores
 Classic

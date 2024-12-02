@@ -38,6 +38,12 @@ UPDATE `spell_template` SET `EffectBasePoints1`=19, `EffectBasePoints2`=19 WHERE
 UPDATE `spell_template` SET `SpellFamilyFlags`= 8388608 WHERE `Id`= 1079 OR `Id`= 9492 OR `Id`= 9493 OR `Id`= 9752 OR `Id`= 9894 OR `Id`= 9896;
 UPDATE `spell_template` SET `SpellFamilyName`= 0, `SpellFamilyFlags`= 0 WHERE `Id`= 9007 OR `Id`= 9824 OR `Id`= 9826;
 
+UPDATE `spell_template` SET `EffectBasePoints1`= -3 WHERE `Id`= 16039;
+UPDATE `spell_template` SET `EffectBasePoints1`= -5 WHERE `Id`= 16109;
+UPDATE `spell_template` SET `EffectBasePoints1`= -7 WHERE `Id`= 16110;
+UPDATE `spell_template` SET `EffectBasePoints1`= -9 WHERE `Id`= 16111;
+UPDATE `spell_template` SET `EffectBasePoints1`= -11 WHERE `Id`= 16112;
+
 SET @START_ITEM_ID := 25819;
 SET @END_ITEM_ID := @START_ITEM_ID + 3;
 DELETE FROM `item_template` WHERE `entry` BETWEEN  @START_ITEM_ID AND @END_ITEM_ID;
