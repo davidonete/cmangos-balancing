@@ -19,6 +19,8 @@ List of changes:
 		- Modified Savage Fury (16998, 16999) will also increase bleed damage up to a 30%
 	- Shaman
 		- Modified Convection (16039, 16109, 16110, 16111, 16112) to increase mana reduction up to 30%
+	- Hunter
+		- Modified Efficiency (19416, 19417, 19418, 19419, 19420) to increase mana reduction up to 30%
 
 # Available Cores
 Classic
