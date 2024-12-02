@@ -23,6 +23,10 @@ UPDATE `spell_template` SET `DurationIndex`= 5 WHERE `Id`= 20217 OR `Id` = 19977
 
 UPDATE `spell_template` SET `CastingTimeIndex` = 4 WHERE `Id` = 24239 OR `Id` = 24274 OR `Id` = 24275;
 
+UPDATE `spell_template` SET `SpellFamilyFlags` = 524288 WHERE Id = 20185 OR Id = 20186 OR Id = 20344 OR Id = 20345 OR Id = 20346 OR Id = 20354 OR Id = 20355;
+UPDATE `spell_template` SET `SpellFamilyFlags` = 1048576 WHERE Id = 20184;
+UPDATE `spell_template` SET `SpellFamilyFlags` = 536870912 WHERE Id = 20188 OR Id = 20300 OR Id = 20301 OR Id = 20302 OR Id = 20303 OR Id = 21183;
+
 SET @START_ITEM_ID := 25819;
 SET @END_ITEM_ID := @START_ITEM_ID + 3;
 DELETE FROM `item_template` WHERE `entry` BETWEEN  @START_ITEM_ID AND @END_ITEM_ID;

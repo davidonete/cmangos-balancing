@@ -11,6 +11,7 @@ List of changes:
 		- Modified Consecration (26573, 20116, 20922, 20923, 20924) to reduce mana cost a 50%
 		- Modified Blessings increase duration a 100%
 		- Modified Hammer of Wrath (24239, 24274, 24275) cast time instant
+		- Modified Judgement different debuffs can be stacked
 	- Druid
 		- Added Starfall (33397): https://www.wowhead.com/classic/spell=439748
 
