@@ -33,6 +33,11 @@ UPDATE `spell_template` SET `EffectBasePoints1`= -31 WHERE `Id` = 16835;
 
 UPDATE `spell_template` SET `RecoveryTime` = 1000, `ManaCost` = 30 WHERE `Id` = 5217 OR `Id` = 6793 OR `Id` = 9845 OR `Id` = 9846;
 
+UPDATE `spell_template` SET `EffectBasePoints1`=9, `EffectBasePoints2`=9 WHERE `Id`=16998;
+UPDATE `spell_template` SET `EffectBasePoints1`=19, `EffectBasePoints2`=19 WHERE `Id`=16999;
+UPDATE `spell_template` SET `SpellFamilyFlags`= 8388608 WHERE `Id`= 1079 OR `Id`= 9492 OR `Id`= 9493 OR `Id`= 9752 OR `Id`= 9894 OR `Id`= 9896;
+UPDATE `spell_template` SET `SpellFamilyName`= 0, `SpellFamilyFlags`= 0 WHERE `Id`= 9007 OR `Id`= 9824 OR `Id`= 9826;
+
 SET @START_ITEM_ID := 25819;
 SET @END_ITEM_ID := @START_ITEM_ID + 3;
 DELETE FROM `item_template` WHERE `entry` BETWEEN  @START_ITEM_ID AND @END_ITEM_ID;

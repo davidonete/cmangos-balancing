@@ -51,6 +51,12 @@ UPDATE `spell_template` SET `EffectBasePoints1`= -61 WHERE `Id` = 16835;
 -- Tiger's Fury reduce energy cost to 0 and add 30 seconds cooldown
 UPDATE `spell_template` SET `RecoveryTime` = 30000, `ManaCost` = 0 WHERE `Id` = 5217 OR `Id` = 6793 OR `Id` = 9845 OR `Id` = 9846;
 
+-- Savage Fury will also increase bleed damage up to a 30%
+UPDATE `spell_template` SET `EffectBasePoints1`= 14, `EffectBasePoints2`= 14 WHERE `Id`=16998;
+UPDATE `spell_template` SET `EffectBasePoints1`= 29, `EffectBasePoints2`= 29 WHERE `Id`=16999;
+UPDATE `spell_template` SET `SpellFamilyFlags`= 8392704 WHERE `Id`= 1079 OR `Id`= 9492 OR `Id`= 9493 OR `Id`= 9752 OR `Id`= 9894 OR `Id`= 9896; -- Rip
+UPDATE `spell_template` SET `SpellFamilyName`= 7, `SpellFamilyFlags`= 4096 WHERE `Id`= 9007 OR `Id`= 9824 OR `Id`= 9826; -- Pounce
+
 -- Items
 SET @START_ITEM_ID := 25819;
 SET @END_ITEM_ID := @START_ITEM_ID + 3;

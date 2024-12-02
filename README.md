@@ -16,6 +16,7 @@ List of changes:
 		- Added Starfall (33397): https://www.wowhead.com/classic/spell=439748
 		- Modified Natural Shapeshifter (16833, 16834, 16835) to increase mana reduction up to 60%
 		- Modified Tiger's Fury (5217, 6793, 9845, 9846) to remove energy cost and add a 30 seconds cooldown
+		- Modified Savage Fury (16998, 16999) will also increase bleed damage up to a 30%
 
 # Available Cores
 Classic
