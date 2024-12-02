@@ -31,6 +31,8 @@ UPDATE `spell_template` SET `EffectBasePoints1`= -11 WHERE `Id` = 16833;
 UPDATE `spell_template` SET `EffectBasePoints1`= -21 WHERE `Id` = 16834;
 UPDATE `spell_template` SET `EffectBasePoints1`= -31 WHERE `Id` = 16835;
 
+UPDATE `spell_template` SET `RecoveryTime` = 1000, `ManaCost` = 30 WHERE `Id` = 5217 OR `Id` = 6793 OR `Id` = 9845 OR `Id` = 9846;
+
 SET @START_ITEM_ID := 25819;
 SET @END_ITEM_ID := @START_ITEM_ID + 3;
 DELETE FROM `item_template` WHERE `entry` BETWEEN  @START_ITEM_ID AND @END_ITEM_ID;

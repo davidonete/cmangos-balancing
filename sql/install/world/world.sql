@@ -48,6 +48,9 @@ UPDATE `spell_template` SET `EffectBasePoints1`= -21 WHERE `Id` = 16833;
 UPDATE `spell_template` SET `EffectBasePoints1`= -41 WHERE `Id` = 16834;
 UPDATE `spell_template` SET `EffectBasePoints1`= -61 WHERE `Id` = 16835;
 
+-- Tiger's Fury reduce energy cost to 0 and add 30 seconds cooldown
+UPDATE `spell_template` SET `RecoveryTime` = 30000, `ManaCost` = 0 WHERE `Id` = 5217 OR `Id` = 6793 OR `Id` = 9845 OR `Id` = 9846;
+
 -- Items
 SET @START_ITEM_ID := 25819;
 SET @END_ITEM_ID := @START_ITEM_ID + 3;
