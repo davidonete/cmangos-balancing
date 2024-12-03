@@ -1,6 +1,6 @@
 SET @START_SPELL_ID := 33393;
-SET @END_SPELL_ID := @START_SPELL_ID + 7;
-DELETE FROM `spell_template` WHERE `Id` BETWEEN  @START_SPELL_ID AND @END_SPELL_ID;
+SET @END_SPELL_ID := @START_SPELL_ID + 9;
+DELETE FROM `spell_template` WHERE `Id` BETWEEN @START_SPELL_ID AND @END_SPELL_ID;
 
 UPDATE `spell_template` SET `EffectBasePoints1`= -4  WHERE `Id`= 20101;
 UPDATE `spell_template` SET `EffectBasePoints1`= -7  WHERE `Id`= 20102;
@@ -49,6 +49,8 @@ UPDATE `spell_template` SET `EffectBasePoints1`= -5 WHERE `Id`= 19417;
 UPDATE `spell_template` SET `EffectBasePoints1`= -7 WHERE `Id`= 19418;
 UPDATE `spell_template` SET `EffectBasePoints1`= -9 WHERE `Id`= 19419;
 UPDATE `spell_template` SET `EffectBasePoints1`= -11 WHERE `Id`= 19420;
+
+DELETE FROM `spell_affect` WHERE `entry` BETWEEN @START_SPELL_ID AND @END_SPELL_ID;
 
 SET @START_ITEM_ID := 25819;
 SET @END_ITEM_ID := @START_ITEM_ID + 4;
