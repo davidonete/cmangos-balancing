@@ -14,6 +14,7 @@ List of changes:
 		- Modified Judgement spells so different debuffs can be placed on the same target
 	- Druid
 		- Added Starfall (33397): https://www.wowhead.com/classic/spell=439748
+		- Added Sunfire (33399): https://www.wowhead.com/classic/spell=414684
 		- Modified Natural Shapeshifter talent to increase mana reduction up to 60%
 		- Modified Tiger's Fury spell to remove energy cost and add a 30 seconds cooldown
 		- Modified Savage Fury talen will also increase bleed damage up to a 30%
