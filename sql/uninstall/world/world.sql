@@ -1,5 +1,5 @@
 SET @START_SPELL_ID := 33393;
-SET @END_SPELL_ID := @START_SPELL_ID + 14;
+SET @END_SPELL_ID := @START_SPELL_ID + 19;
 DELETE FROM `spell_template` WHERE `Id` BETWEEN @START_SPELL_ID AND @END_SPELL_ID;
 
 UPDATE `spell_template` SET `EffectBasePoints1`= -4  WHERE `Id`= 20101;
@@ -51,7 +51,7 @@ UPDATE `spell_template` SET `EffectBasePoints1`= -9 WHERE `Id`= 19419;
 UPDATE `spell_template` SET `EffectBasePoints1`= -11 WHERE `Id`= 19420;
 
 SET @START_ITEM_ID := 25819;
-SET @END_ITEM_ID := @START_ITEM_ID + 5;
+SET @END_ITEM_ID := @START_ITEM_ID + 6;
 DELETE FROM `item_template` WHERE `entry` BETWEEN  @START_ITEM_ID AND @END_ITEM_ID;
 DELETE FROM `locales_item` WHERE `entry` BETWEEN  @START_ITEM_ID AND @END_ITEM_ID;
 DELETE FROM `creature_loot_template` WHERE `item` BETWEEN  @START_ITEM_ID AND @END_ITEM_ID;
