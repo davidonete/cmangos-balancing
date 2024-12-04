@@ -55,7 +55,7 @@ namespace cmangos_module
         if (victim)
         {
             const uint32 spellID = spell->m_spellInfo->EffectTriggerSpell[spellEffectIndex];
-            for (uint8 spellEffectIndex = 0; spellEffectIndex < MAX_SPELL_EFFECTS; spellEffectIndex++)
+            for (uint8 spellEffectIndex = 0; spellEffectIndex < MAX_EFFECT_INDEX; spellEffectIndex++)
             {
                 if (Aura* aura = victim->GetAura(spellID, (SpellEffectIndex)(spellEffectIndex)))
                 {
