@@ -19,6 +19,7 @@ namespace cmangos_module
     
         void HandleRefreshAura(const Spell* spell, uint8 spellEffectIndex, Unit* caster, Unit* victim);
         void HandleRefreshAuraByFamilyMask(const Spell* spell, uint8 spellEffectIndex, Unit* caster, Unit* victim);
+        void HandleRemoveAura(const Spell* spell, uint8 spellEffectIndex, Unit* caster, Unit* victim);
     };
 }
 #endif

@@ -43,3 +43,16 @@ To remove transmog from your server you have to remove it from the db and client
 1. Remove the `BUILD_MODULE_BALANCING` flag from your cmake configuration and recompile the game
 2. Execute the sql queries located in the `src/modules/balancing/sql/uninstall` folder. Each folder inside represents where you should execute the queries. E.g. The queries inside of `src/modules/balancing/sql/uninstall/world` will need to be executed in the world/mangosd database, the ones in `src/modules/balancing/sql/uninstall/characters` in the characters database, etc...
 3. Remove the patch files from the client added in the installation phase.
+
+# Planned work
+- Spells:
+	- Druid
+		- Starsurge should also trigger Elune's Fires on moonfire and sunfire
+		- Starsurge should trigger Solar and Lunar Eclipse
+		- Fix Eclipse charges stacking up
+	- Shaman
+		- Add Maelstrom Weapon: https://www.wowhead.com/classic/spell=408498
+		- Add Shamanistic Rage: https://www.wowhead.com/classic/spell=425336
+		- Add Water Shield: https://www.wowhead.com/classic/spell=408510
+		- Add Lava Burst: https://www.wowhead.com/classic/spell=408490
+		- Add Overload: https://www.wowhead.com/classic/spell=408438

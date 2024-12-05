@@ -22,12 +22,16 @@ namespace cmangos_module
         if (GetConfig()->enabled && spell)
         {
             const SpellEntry* spellInfo = spell->m_spellInfo;
-            Unit* spellTarget = victim ? victim : spell->GetUnitTarget();
-
-            for (uint8 spellEffectIndex = 0; spellEffectIndex < MAX_SPELL_EFFECTS; spellEffectIndex++)
+            for (uint8 spellEffectIndex = 0; spellEffectIndex < MAX_EFFECT_INDEX; spellEffectIndex++)
             {
                 if (spellInfo->Effect[spellEffectIndex] == SPELL_EFFECT_EXTENDED)
                 {
+                    Unit* spellTarget = victim ? victim : spell->GetUnitTarget();
+                    if (caster && spellInfo->EffectImplicitTargetA[spellEffectIndex] == TARGET_UNIT_CASTER)
+                    {
+                        spellTarget = caster;
+                    }
+
                     const ExtendedSpellEffects spellEffect = (ExtendedSpellEffects)(spellInfo->EffectMiscValue[spellEffectIndex]);
                     switch (spellEffect)
                     {
@@ -40,6 +44,12 @@ namespace cmangos_module
                         case ExtendedSpellEffects::SPELL_EFFECT_REFRESH_AURA_FAMILY_MASK:
                         {
                             HandleRefreshAuraByFamilyMask(spell, spellEffectIndex, caster, spellTarget);
+                            break;
+                        }
+
+                        case ExtendedSpellEffects::SPELL_EFFECT_REMOVE_AURA:
+                        {
+                            HandleRemoveAura(spell, spellEffectIndex, caster, spellTarget);
                             break;
                         }
 
@@ -91,6 +101,17 @@ namespace cmangos_module
                     }
                 }
             }
+        }
+    }
+
+    void BalancingModule::HandleRemoveAura(const Spell* spell, uint8 spellEffectIndex, Unit* caster, Unit* victim)
+    {
+        if (victim)
+        {
+            const ObjectGuid casterGuid = caster ? caster->GetObjectGuid() : ObjectGuid();
+            const uint32 spellID = spell->m_spellInfo->EffectTriggerSpell[spellEffectIndex];
+            const uint32 stackAmount = spell->m_spellInfo->EffectBasePoints[spellEffectIndex];
+            victim->RemoveAuraHolderFromStack(spellID, stackAmount > 0 ? stackAmount ? 9999, casterGuid);
         }
     }
 }
