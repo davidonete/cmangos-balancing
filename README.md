@@ -21,6 +21,7 @@ List of changes:
 		- Modified Natural Shapeshifter talent to increase mana reduction up to 60%
 		- Modified Tiger's Fury spell to remove energy cost and add a 30 seconds cooldown
 		- Modified Savage Fury talen will also increase bleed damage up to a 30%
+		- Modified Insect Swarm so it can now be casted in moonkin form and increase duration to 20 seconds
 	- Shaman
 		- Modified Convection talent to increase mana reduction up to 30%
 	- Hunter

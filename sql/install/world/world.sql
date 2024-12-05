@@ -71,6 +71,9 @@ UPDATE `spell_template` SET `EffectBasePoints1`= 29, `EffectBasePoints2`= 29 WHE
 UPDATE `spell_template` SET `SpellFamilyFlags`= 8392704 WHERE `Id`= 1079 OR `Id`= 9492 OR `Id`= 9493 OR `Id`= 9752 OR `Id`= 9894 OR `Id`= 9896; -- Rip
 UPDATE `spell_template` SET `SpellFamilyName`= 7, `SpellFamilyFlags`= 4096 WHERE `Id`= 9007 OR `Id`= 9824 OR `Id`= 9826; -- Pounce
 
+-- Insect swarm increase duration to 20 seconds and allow being casted in moonkin form
+UPDATE `spell_template` SET `AttributesEx2`=524288, `Stances`=1073741824, `StancesNot`=0, `DurationIndex`=18 WHERE `Id`=5570 OR `Id`=24974 OR `Id`=24975 OR `Id`=24976 OR `Id`=24977;
+
 -- Shaman
 -- Convection upgrade from 10% to 30%
 UPDATE `spell_template` SET `EffectBasePoints1`= -7  WHERE `Id`= 16039;

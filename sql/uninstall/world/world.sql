@@ -38,6 +38,8 @@ UPDATE `spell_template` SET `EffectBasePoints1`=19, `EffectBasePoints2`=19 WHERE
 UPDATE `spell_template` SET `SpellFamilyFlags`= 8388608 WHERE `Id`= 1079 OR `Id`= 9492 OR `Id`= 9493 OR `Id`= 9752 OR `Id`= 9894 OR `Id`= 9896;
 UPDATE `spell_template` SET `SpellFamilyName`= 0, `SpellFamilyFlags`= 0 WHERE `Id`= 9007 OR `Id`= 9824 OR `Id`= 9826;
 
+UPDATE `spell_template` SET `AttributesEx2`=0, `Stances`=0, `StancesNot`=1073741824, `DurationIndex`=29 WHERE `Id`=5570 OR `Id`=24974 OR `Id`=24975 OR `Id`=24976 OR `Id`=24977;
+
 UPDATE `spell_template` SET `EffectBasePoints1`= -3 WHERE `Id`= 16039;
 UPDATE `spell_template` SET `EffectBasePoints1`= -5 WHERE `Id`= 16109;
 UPDATE `spell_template` SET `EffectBasePoints1`= -7 WHERE `Id`= 16110;
