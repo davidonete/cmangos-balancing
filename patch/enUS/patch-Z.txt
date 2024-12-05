@@ -1,4 +1,4 @@
-Patch version:  1
+Patch version:  2
 Description:    Patch for the Cmangos balancing module (https://github.com/davidonete/cmangos_balancing) which contains extra spells and items to balancing classes
 Client version: 1.12.1 (5875)
 Locale:         enUS
