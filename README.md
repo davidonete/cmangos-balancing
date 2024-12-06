@@ -52,7 +52,6 @@ To remove transmog from your server you have to remove it from the db and client
 - Spells:
 	- Druid
 		- Starsurge should also trigger Elune's Fires on moonfire and sunfire
-		- Starsurge should trigger Solar and Lunar Eclipse
 		- Fix Eclipse charges stacking up
 	- Shaman
 		- Add Shamanistic Rage: https://www.wowhead.com/classic/spell=425336
