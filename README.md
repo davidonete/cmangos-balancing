@@ -17,7 +17,7 @@ List of changes:
 		- Added Sunfire (33399): https://www.wowhead.com/classic/spell=414684
 		- Added Elune's Fires (33401, 33403): https://www.wowhead.com/classic/spell=414719
 		- Added Starsurge (33406): https://www.wowhead.com/classic/spell=417157
-		- Added Eclipse (33408, 33410): https://www.wowhead.com/classic/spell=408248
+		- Added Eclipse (33408, 33418, 33410, 33420): https://www.wowhead.com/classic/spell=408248
 		- Modified Natural Shapeshifter talent to increase mana reduction up to 60%
 		- Modified Tiger's Fury spell to remove energy cost and add a 30 seconds cooldown
 		- Modified Savage Fury talen will also increase bleed damage up to a 30%
@@ -32,7 +32,7 @@ List of changes:
 Classic
 
 # Version
-2
+3
 
 # How to install
 1. Follow the instructions in https://github.com/davidonete/cmangos-modules?tab=readme-ov-file#how-to-install
@@ -50,9 +50,6 @@ To remove transmog from your server you have to remove it from the db and client
 
 # Planned work
 - Spells:
-	- Druid
-		- Starsurge should also trigger Elune's Fires on moonfire and sunfire
-		- Fix Eclipse charges stacking up
 	- Shaman
 		- Add Shamanistic Rage: https://www.wowhead.com/classic/spell=425336
 		- Add Water Shield: https://www.wowhead.com/classic/spell=408510
