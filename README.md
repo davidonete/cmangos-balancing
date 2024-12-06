@@ -23,12 +23,16 @@ List of changes:
 		- Modified Savage Fury talen will also increase bleed damage up to a 30%
 		- Modified Insect Swarm so it can now be casted in moonkin form and increase duration to 20 seconds
 	- Shaman
+		- Added Maelstrom Weapon (33413, 33414): https://www.wowhead.com/classic/spell=408498
 		- Modified Convection talent to increase mana reduction up to 30%
 	- Hunter
 		- Modified Efficiency talent to increase mana reduction up to 30%
 
 # Available Cores
 Classic
+
+# Version
+2
 
 # How to install
 1. Follow the instructions in https://github.com/davidonete/cmangos-modules?tab=readme-ov-file#how-to-install
@@ -51,7 +55,6 @@ To remove transmog from your server you have to remove it from the db and client
 		- Starsurge should trigger Solar and Lunar Eclipse
 		- Fix Eclipse charges stacking up
 	- Shaman
-		- Add Maelstrom Weapon: https://www.wowhead.com/classic/spell=408498
 		- Add Shamanistic Rage: https://www.wowhead.com/classic/spell=425336
 		- Add Water Shield: https://www.wowhead.com/classic/spell=408510
 		- Add Lava Burst: https://www.wowhead.com/classic/spell=408490

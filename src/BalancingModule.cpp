@@ -111,7 +111,7 @@ namespace cmangos_module
             const ObjectGuid casterGuid = caster ? caster->GetObjectGuid() : ObjectGuid();
             const uint32 spellID = spell->m_spellInfo->EffectTriggerSpell[spellEffectIndex];
             const uint32 stackAmount = spell->m_spellInfo->EffectBasePoints[spellEffectIndex];
-            victim->RemoveAuraHolderFromStack(spellID, stackAmount > 0 ? stackAmount ? 9999, casterGuid);
+            victim->RemoveAuraHolderFromStack(spellID, stackAmount > 0 ? stackAmount : 9999, casterGuid);
         }
     }
 }
