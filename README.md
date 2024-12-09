@@ -24,6 +24,7 @@ List of changes:
 		- Modified Insect Swarm so it can now be casted in moonkin form and increase duration to 20 seconds
 	- Shaman
 		- Added Maelstrom Weapon (33413, 33414): https://www.wowhead.com/classic/spell=408498
+		- Added Lava Burst (33423, 33424): https://www.wowhead.com/classic/spell=408490
 		- Modified Convection talent to increase mana reduction up to 30%
 	- Hunter
 		- Modified Efficiency talent to increase mana reduction up to 30%
@@ -32,7 +33,7 @@ List of changes:
 Classic
 
 # Version
-3
+4
 
 # How to install
 1. Follow the instructions in https://github.com/davidonete/cmangos-modules?tab=readme-ov-file#how-to-install
@@ -53,5 +54,4 @@ To remove transmog from your server you have to remove it from the db and client
 	- Shaman
 		- Add Shamanistic Rage: https://www.wowhead.com/classic/spell=425336
 		- Add Water Shield: https://www.wowhead.com/classic/spell=408510
-		- Add Lava Burst: https://www.wowhead.com/classic/spell=408490
 		- Add Overload: https://www.wowhead.com/classic/spell=408438
