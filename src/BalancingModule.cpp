@@ -3,6 +3,7 @@
 #include "Entities/Unit.h"
 #include "Spells/Spell.h"
 #include "Spells/SpellAuras.h"
+#include "Spells/SpellMgr.h"
 
 namespace cmangos_module
 {
@@ -50,6 +51,12 @@ namespace cmangos_module
                         case ExtendedSpellEffects::SPELL_EFFECT_REMOVE_AURA:
                         {
                             HandleRemoveAura(spell, spellEffectIndex, caster, spellTarget);
+                            break;
+                        }
+
+                        case ExtendedSpellEffects::SPELL_EFFECT_CLONE_SPELL:
+                        {
+                            HandleCloneSpell(spell, spellEffectIndex, caster, spellTarget);
                             break;
                         }
 
@@ -112,6 +119,75 @@ namespace cmangos_module
             const uint32 spellID = spell->m_spellInfo->EffectTriggerSpell[spellEffectIndex];
             const uint32 stackAmount = spell->m_spellInfo->EffectBasePoints[spellEffectIndex];
             victim->RemoveAuraHolderFromStack(spellID, stackAmount > 0 ? stackAmount : 9999, casterGuid);
+        }
+    }
+
+    void BalancingModule::HandleCloneSpell(const Spell* spell, uint8 spellEffectIndex, Unit* caster, Unit* victim)
+    {
+        if (victim)
+        {
+            if (caster->IsSpellReady(*spell->m_spellInfo))
+            {
+                Spell* originalSpell = caster->GetCurrentSpell(CURRENT_MELEE_SPELL);
+                if (originalSpell == nullptr)
+                {
+                    originalSpell = caster->GetCurrentSpell(CURRENT_GENERIC_SPELL);
+                }
+
+                if (originalSpell)
+                {
+                    // Add modifiers on mana cost and casting time to 0
+                    // ...
+
+                    if (spell->m_spellInfo->RecoveryTime <= 0)
+                    {
+                        // Add a small cooldown so the spell doesn't chain trigger
+                        caster->AddCooldown(*spell->m_spellInfo, nullptr, false, 1000);
+                    }
+
+                    SpellAuraHolder* auraModHolder = nullptr;
+                    const uint32 auraModSpellId = spell->m_spellInfo->EffectTriggerSpell[spellEffectIndex];
+                    if (const SpellEntry* auraModSpellInfo = sSpellTemplate.LookupEntry<SpellEntry>(auraModSpellId))
+                    {
+                        auraModHolder = CreateSpellAuraHolder(auraModSpellInfo, caster, caster, nullptr, spell->m_spellInfo);
+                        for (uint32 i = 0; i < MAX_EFFECT_INDEX; ++i)
+                        {
+                            uint8 eff = auraModSpellInfo->Effect[i];
+                            if (eff >= MAX_SPELL_EFFECTS)
+                            {
+                                continue;
+                            }
+
+                            if (IsAreaAuraEffect(eff) ||
+                                eff == SPELL_EFFECT_APPLY_AURA ||
+                                eff == SPELL_EFFECT_PERSISTENT_AREA_AURA)
+                            {
+                                int32 basePoints = auraModSpellInfo->CalculateSimpleValue(SpellEffectIndex(i));
+                                int32 damage = basePoints;
+                                Aura* aura = CreateAura(auraModSpellInfo, SpellEffectIndex(i), &damage, &basePoints, auraModHolder, caster);
+                                auraModHolder->AddAura(aura, SpellEffectIndex(i));
+                            }
+                        }
+                        
+                        if (!caster->AddSpellAuraHolder(auraModHolder))
+                        {
+                            delete auraModHolder;
+                            auraModHolder = nullptr;
+                        }
+                    }
+
+                    Spell* newSpell = new Spell(caster, originalSpell->m_spellInfo, TRIGGERED_OLD_TRIGGERED, caster->GetObjectGuid(), spell->m_spellInfo);
+                    SpellCastTargets targets;
+                    targets.setUnitTarget(originalSpell->GetUnitTarget());
+                    newSpell->SetOverridenSpeed(originalSpell->GetSpellSpeed() * 0.5f);
+                    newSpell->SpellStart(&targets);
+
+                    if (auraModHolder)
+                    {
+                        caster->RemoveSpellAuraHolder(auraModHolder);
+                    }
+                }
+            }
         }
     }
 }

@@ -24,6 +24,10 @@ namespace cmangos_module
                                                     // - EffectTriggerSpell(1/2/3): The spell id aura to remove
                                                     // - EffectBasePoints(1/2/3): The amount of stacks to remove (leave to 0 to remove all)
 
+        SPELL_EFFECT_CLONE_SPELL              = 4,  // The spell will clone the triggering spell on it's target
+                                                    // - EffectBasePoints(1/2/3): How effective is the cloned spell in percentage (100 being the exact amount from the original)
+                                                    // - EffectTriggerSpell(1/2/3): The spell id aura modifier to add for this cast (e.g. increase damage mod)
+
         MAX_SPELL_EFFECTS
     };
 
