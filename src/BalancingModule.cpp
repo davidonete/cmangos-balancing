@@ -176,10 +176,10 @@ namespace cmangos_module
                         }
                     }
 
-                    Spell* newSpell = new Spell(caster, originalSpell->m_spellInfo, TRIGGERED_OLD_TRIGGERED, caster->GetObjectGuid(), spell->m_spellInfo);
+                    uint32 triggeredFlags = TRIGGERED_INSTANT_CAST | TRIGGERED_IGNORE_GCD | TRIGGERED_IGNORE_COSTS | TRIGGERED_IGNORE_COOLDOWNS;
+                    Spell* newSpell = new Spell(caster, originalSpell->m_spellInfo, triggeredFlags, caster->GetObjectGuid(), spell->m_spellInfo);
                     SpellCastTargets targets;
                     targets.setUnitTarget(originalSpell->GetUnitTarget());
-                    newSpell->SetOverridenSpeed(originalSpell->GetSpellSpeed() * 0.5f);
                     newSpell->SpellStart(&targets);
 
                     if (auraModHolder)
