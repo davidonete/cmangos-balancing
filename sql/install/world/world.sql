@@ -156,16 +156,16 @@ INSERT INTO `locales_item`            (`entry`,          `name_loc1`, `name_loc2
 DELETE FROM `creature_loot_template` WHERE `item` BETWEEN  @START_ITEM_ID AND @END_ITEM_ID;
 INSERT INTO `creature_loot_template`                        (`entry`, `item`,            `ChanceOrQuestChance`, `groupid`, `mincountOrRef`, `maxcount`, `condition_id`, `comments`) VALUES 
 -- Paladin spell books
-/* Book: Crusader Strike   (25819) on Herod      (3975)  */ (3975,     @START_ITEM_ID,    35,                    0,         1,               1,          0,             'Book: Crusader Strike'),
-/* Book: Hand of Reckoning (25820) on Vishas     (3983)  */ (3975,     @START_ITEM_ID+1,  35,                    0,         1,               1,          0,             'Book: Hand of Reckoning'),
+/* Book: Crusader Strike   (25819) on Herod      (3975)  */ (3975,     @START_ITEM_ID,    51,                    0,         1,               1,          0,             'Book: Crusader Strike'),
+/* Book: Hand of Reckoning (25820) on Vishas     (3983)  */ (3975,     @START_ITEM_ID+1,  51,                    0,         1,               1,          0,             'Book: Hand of Reckoning'),
 -- Druid spell books
-/* Book: Starfall          (25821) on Mutanus    (3654)  */ (3654,     @START_ITEM_ID+2,  35,                    0,         1,               1,          0,             'Book: Starfall'),
-/* Book: Sunfire           (25822) on Bazzalan   (11519) */ (11519,    @START_ITEM_ID+3,  35,                    0,         1,               1,          0,             'Book: Sunfire'),
-/* Book: Elune's Fires     (25823) on Tuten'kash (7355)  */ (7355,     @START_ITEM_ID+4,  35,                    0,         1,               1,          0,             'Book: Elune\'s Fires'),
-/* Book: Starsurge         (25824) on Charlga    (4421)  */ (4421,     @START_ITEM_ID+5,  35,                    0,         1,               1,          0,             'Book: Starsurge'),
-/* Book: Lunar Eclipse     (25825) on Vyletongue (12236) */ (12236,    @START_ITEM_ID+6,  35,                    0,         1,               1,          0,             'Book: Lunar Eclipse'),
-/* Book: Solar Eclipse     (25827) on Razorlash  (12258) */ (12258,    @START_ITEM_ID+8,  35,                    0,         1,               1,          0,             'Book: Solar Eclipse'),
-/* Book: Maelstrom Weapon  (25826) on Grimlok    (4854)  */ (4854,     @START_ITEM_ID+7,  35,                    0,         1,               1,          0,             'Book: Maelstrom Weapon'),
-/* Book: Lava Burst        (25828) on Doan       (6487)  */ (6487,     @START_ITEM_ID+9,  35,                    0,         1,               1,          0,             'Book: Lava Burst'),
-/* Book: Water Shield      (25829) on Gelihast   (6243)  */ (6243,     @START_ITEM_ID+10, 35,                    0,         1,               1,          0,             'Book: Water Shield'),
-/* Book: Overload          (25830) on Oggleflint (11517) */ (11517,    @START_ITEM_ID+11, 35,                    0,         1,               1,          0,             'Book: Overload');
+/* Book: Starfall          (25821) on Mutanus    (3654)  */ (3654,     @START_ITEM_ID+2,  51,                    0,         1,               1,          0,             'Book: Starfall'),
+/* Book: Sunfire           (25822) on Bazzalan   (11519) */ (11519,    @START_ITEM_ID+3,  51,                    0,         1,               1,          0,             'Book: Sunfire'),
+/* Book: Elune's Fires     (25823) on Tuten'kash (7355)  */ (7355,     @START_ITEM_ID+4,  51,                    0,         1,               1,          0,             'Book: Elune\'s Fires'),
+/* Book: Starsurge         (25824) on Charlga    (4421)  */ (4421,     @START_ITEM_ID+5,  51,                    0,         1,               1,          0,             'Book: Starsurge'),
+/* Book: Lunar Eclipse     (25825) on Vyletongue (12236) */ (12236,    @START_ITEM_ID+6,  51,                    0,         1,               1,          0,             'Book: Lunar Eclipse'),
+/* Book: Solar Eclipse     (25827) on Razorlash  (12258) */ (12258,    @START_ITEM_ID+8,  51,                    0,         1,               1,          0,             'Book: Solar Eclipse'),
+/* Book: Maelstrom Weapon  (25826) on Grimlok    (4854)  */ (4854,     @START_ITEM_ID+7,  51,                    0,         1,               1,          0,             'Book: Maelstrom Weapon'),
+/* Book: Lava Burst        (25828) on Doan       (6487)  */ (6487,     @START_ITEM_ID+9,  51,                    0,         1,               1,          0,             'Book: Lava Burst'),
+/* Book: Water Shield      (25829) on Gelihast   (6243)  */ (6243,     @START_ITEM_ID+10, 51,                    0,         1,               1,          0,             'Book: Water Shield'),
+/* Book: Overload          (25830) on Oggleflint (11517) */ (11517,    @START_ITEM_ID+11, 51,                    0,         1,               1,          0,             'Book: Overload');
