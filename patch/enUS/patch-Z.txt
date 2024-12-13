@@ -1,5 +1,5 @@
 Description:    Patch for the Cmangos balancing module (https://github.com/davidonete/cmangos_balancing) which contains extra spells and items to balancing classes
-Version:  		6
+Version:  		7
 Client version: 1.12.1 (5875)
 Locale:         enUS
 
@@ -8,6 +8,7 @@ Changes
 	- Paladin
 		- Added Crusader Strike (33393): https://www.wowhead.com/wotlk/spell=35395
 		- Added Hand of Reckoning (33395): https://www.wowhead.com/wotlk/spell=62124
+		- Added Avenger's Shield (33434): https://www.wowhead.com/classic/spell=407669
 		- Modified Benediction (20101, 20102, 20103, 20104, 20105) to increase mana reduction up to 30%
 		- Modified Holy Shield (20925, 20927, 20928) to increase block chance to 50% and reduce a 50% the mana cost
 		- Modified Consecration (26573, 20116, 20922, 20923, 20924) to reduce mana cost a 50%

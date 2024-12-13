@@ -6,6 +6,7 @@ List of changes:
 	- Paladin
 		- Added Crusader Strike (33393): https://www.wowhead.com/wotlk/spell=35395
 		- Added Hand of Reckoning (33395): https://www.wowhead.com/wotlk/spell=62124
+		- Added Avenger's Shield (33434): https://www.wowhead.com/classic/spell=407669
 		- Modified Benediction talent to increase mana reduction up to 30%
 		- Modified Holy Shield spell to increase block chance to 50% and reduce a 50% the mana cost
 		- Modified Consecration spell to reduce mana cost 50%
@@ -35,7 +36,7 @@ List of changes:
 Classic
 
 # Version
-6
+7
 
 # How to install
 1. Follow the instructions in https://github.com/davidonete/cmangos-modules?tab=readme-ov-file#how-to-install
