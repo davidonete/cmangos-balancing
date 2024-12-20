@@ -27,6 +27,8 @@ UPDATE `spell_template` SET `SpellFamilyFlags` = 524288 WHERE Id = 20185 OR Id =
 UPDATE `spell_template` SET `SpellFamilyFlags` = 1048576 WHERE Id = 20184;
 UPDATE `spell_template` SET `SpellFamilyFlags` = 536870912 WHERE Id = 20188 OR Id = 20300 OR Id = 20301 OR Id = 20302 OR Id = 20303 OR Id = 21183;
 
+UPDATE `spell_template` SET `TargetCreatureType` = 36 WHERE Id = 879 OR Id = 5614 OR Id = 5615 OR Id = 10312 OR Id = 10313 OR Id = 10314;
+
 UPDATE `spell_template` SET `EffectBasePoints1`= -11 WHERE `Id` = 16833;
 UPDATE `spell_template` SET `EffectBasePoints1`= -21 WHERE `Id` = 16834;
 UPDATE `spell_template` SET `EffectBasePoints1`= -31 WHERE `Id` = 16835;
