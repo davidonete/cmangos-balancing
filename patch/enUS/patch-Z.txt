@@ -1,5 +1,5 @@
 Description:    Patch for the Cmangos balancing module (https://github.com/davidonete/cmangos_balancing) which contains extra spells and items to balancing classes
-Version:  		9
+Version:  		10
 Client version: 1.12.1 (5875)
 Locale:         enUS
 
@@ -35,3 +35,5 @@ Changes
 	- Hunter
 		- Added Aspect of the Viper (33436): https://www.wowhead.com/classic/spell=34074
 		- Modified Efficiency (19416, 19417, 19418, 19419, 19420) to increase mana reduction up to 30%
+	- Priest
+		- Added Vampiric Touch (33439): https://www.wowhead.com/classic/spell=402668

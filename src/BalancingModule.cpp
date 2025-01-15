@@ -28,35 +28,33 @@ namespace cmangos_module
                 if (spellInfo->Effect[spellEffectIndex] == SPELL_EFFECT_EXTENDED)
                 {
                     Unit* spellTarget = victim ? victim : spell->GetUnitTarget();
-                    if (caster && spellInfo->EffectImplicitTargetA[spellEffectIndex] == TARGET_UNIT_CASTER)
-                    {
-                        spellTarget = caster;
-                    }
+                    const uint32 targetMode = spellInfo->EffectImplicitTargetA[spellEffectIndex];
+                    std::vector<Unit*> victims = GetImplicitTargets(targetMode, spellInfo, spellEffectIndex, caster, spellTarget);
 
                     const ExtendedSpellEffects spellEffect = (ExtendedSpellEffects)(spellInfo->EffectMiscValue[spellEffectIndex]);
                     switch (spellEffect)
                     {
                         case ExtendedSpellEffects::SPELL_EFFECT_REFRESH_AURA:
                         {
-                            HandleRefreshAura(spell, spellEffectIndex, caster, spellTarget);
+                            HandleRefreshAura(spell, spellEffectIndex, caster, victims);
                             break;
                         }
 
                         case ExtendedSpellEffects::SPELL_EFFECT_REFRESH_AURA_FAMILY_MASK:
                         {
-                            HandleRefreshAuraByFamilyMask(spell, spellEffectIndex, caster, spellTarget);
+                            HandleRefreshAuraByFamilyMask(spell, spellEffectIndex, caster, victims);
                             break;
                         }
 
                         case ExtendedSpellEffects::SPELL_EFFECT_REMOVE_AURA:
                         {
-                            HandleRemoveAura(spell, spellEffectIndex, caster, spellTarget);
+                            HandleRemoveAura(spell, spellEffectIndex, caster, victims);
                             break;
                         }
 
                         case ExtendedSpellEffects::SPELL_EFFECT_CLONE_SPELL:
                         {
-                            HandleCloneSpell(spell, spellEffectIndex, caster, spellTarget);
+                            HandleCloneSpell(spell, spellEffectIndex, caster);
                             break;
                         }
 
@@ -67,11 +65,45 @@ namespace cmangos_module
         }
     }
 
-    void BalancingModule::HandleRefreshAura(const Spell* spell, uint8 spellEffectIndex, Unit* caster, Unit* victim)
+    void BalancingModule::OnProc(const ProcExecutionData& data, SpellAuraProcResult& procResult)
     {
-        if (victim)
+        if (GetConfig()->enabled)
         {
-            const uint32 spellID = spell->m_spellInfo->EffectTriggerSpell[spellEffectIndex];
+            const Aura* triggeredByAura = data.triggeredByAura;
+            if (triggeredByAura)
+            {
+                Unit* caster = triggeredByAura->GetCaster();
+                const SpellEntry* spellInfo = triggeredByAura->GetSpellProto();
+                SpellEffectIndex spellEffectIndex = triggeredByAura->GetEffIndex();
+
+                if (spellInfo->Effect[spellEffectIndex] == SPELL_EFFECT_APPLY_AURA && spellInfo->EffectApplyAuraName[spellEffectIndex] == SPELL_AURA_EXTENDED)
+                {
+                    const uint32 targetMode = spellInfo->EffectMechanic[spellEffectIndex] != 0 ? (uint32)(spellInfo->EffectMechanic[spellEffectIndex]) : spellInfo->EffectImplicitTargetA[spellEffectIndex];
+                    std::vector<Unit*> victims = GetImplicitTargets(targetMode, spellInfo, spellEffectIndex, caster, data.victim);
+
+                    const ExtendedSpellEffects spellEffect = (ExtendedSpellEffects)(spellInfo->EffectMiscValue[spellEffectIndex]);
+                    switch (spellEffect)
+                    {
+                        case ExtendedSpellEffects::SPELL_EFFECT_ENERGIZE_BY_DAMAGE_DONE:
+                        {
+                            const uint32 damage = data.damage;
+                            HandleEnergizeByDamageDone(data.damage, spellInfo, spellEffectIndex, caster, victims);
+                            break;
+                        }
+
+                        default: break;
+                    }
+                }
+            }
+        }
+    }
+
+    void BalancingModule::HandleRefreshAura(const Spell* spell, uint8 spellEffectIndex, Unit* caster, const std::vector<Unit*>& victims)
+    {
+        const uint32 spellID = spell->m_spellInfo->EffectTriggerSpell[spellEffectIndex];
+
+        for (Unit* victim : victims)
+        {
             for (uint8 spellEffectIndex = 0; spellEffectIndex < MAX_EFFECT_INDEX; spellEffectIndex++)
             {
                 if (Aura* aura = victim->GetAura(spellID, (SpellEffectIndex)(spellEffectIndex)))
@@ -90,14 +122,14 @@ namespace cmangos_module
         }
     }
 
-    void BalancingModule::HandleRefreshAuraByFamilyMask(const Spell* spell, uint8 spellEffectIndex, Unit* caster, Unit* victim)
+    void BalancingModule::HandleRefreshAuraByFamilyMask(const Spell* spell, uint8 spellEffectIndex, Unit* caster, const std::vector<Unit*>& victims)
     {
-        if (victim)
-        {
-            const ObjectGuid casterGuid = caster ? caster->GetObjectGuid() : ObjectGuid();
-            const SpellFamily family = (SpellFamily)(spell->m_spellInfo->SpellFamilyName);
-            const uint64 familyMask = spell->m_spellInfo->EffectTriggerSpell[spellEffectIndex];
+        const ObjectGuid casterGuid = caster ? caster->GetObjectGuid() : ObjectGuid();
+        const SpellFamily family = (SpellFamily)(spell->m_spellInfo->SpellFamilyName);
+        const uint64 familyMask = spell->m_spellInfo->EffectTriggerSpell[spellEffectIndex];
 
+        for (Unit* victim : victims)
+        {
             for (uint32 auraType = SPELL_AURA_BIND_SIGHT; auraType < TOTAL_AURAS; auraType++)
             {
                 if (Aura* aura = victim->GetAura((AuraType)(auraType), family, familyMask, casterGuid))
@@ -111,20 +143,21 @@ namespace cmangos_module
         }
     }
 
-    void BalancingModule::HandleRemoveAura(const Spell* spell, uint8 spellEffectIndex, Unit* caster, Unit* victim)
+    void BalancingModule::HandleRemoveAura(const Spell* spell, uint8 spellEffectIndex, Unit* caster, const std::vector<Unit*>& victims)
     {
-        if (victim)
+        const ObjectGuid casterGuid = caster ? caster->GetObjectGuid() : ObjectGuid();
+        const uint32 spellID = spell->m_spellInfo->EffectTriggerSpell[spellEffectIndex];
+        const uint32 stackAmount = spell->m_spellInfo->EffectBasePoints[spellEffectIndex];
+
+        for (Unit* victim : victims)
         {
-            const ObjectGuid casterGuid = caster ? caster->GetObjectGuid() : ObjectGuid();
-            const uint32 spellID = spell->m_spellInfo->EffectTriggerSpell[spellEffectIndex];
-            const uint32 stackAmount = spell->m_spellInfo->EffectBasePoints[spellEffectIndex];
             victim->RemoveAuraHolderFromStack(spellID, stackAmount > 0 ? stackAmount : 9999, casterGuid);
         }
     }
 
-    void BalancingModule::HandleCloneSpell(const Spell* spell, uint8 spellEffectIndex, Unit* caster, Unit* victim)
+    void BalancingModule::HandleCloneSpell(const Spell* spell, uint8 spellEffectIndex, Unit* caster)
     {
-        if (victim)
+        if (caster)
         {
             if (caster->IsSpellReady(*spell->m_spellInfo))
             {
@@ -189,5 +222,106 @@ namespace cmangos_module
                 }
             }
         }
+    }
+
+    void BalancingModule::HandleEnergizeByDamageDone(const uint32 damage, const SpellEntry* spellInfo, uint8 spellEffectIndex, Unit* caster, const std::vector<Unit*>& victims)
+    {
+        const int32 pct = spellInfo->EffectBasePoints[spellEffectIndex];
+        const int32 energizeAmount = damage * pct / 100;
+        const Powers power = (Powers)(spellInfo->EffectItemType[spellEffectIndex]);
+
+        for (Unit* victim : victims)
+        {
+            caster->EnergizeBySpell(victim, spellInfo, energizeAmount, power);
+        }
+    }
+
+    std::vector<Unit*> BalancingModule::GetImplicitTargets(const uint32 targetMode, const SpellEntry* spellInfo, uint8 spellEffectIndex, Unit* caster, Unit* defaultVictim) const
+    {
+        std::vector<Unit*> targets;
+        switch (targetMode)
+        {
+            case TARGET_UNIT_CASTER:
+            {
+                if (caster)
+                {
+                    targets.push_back(caster);
+                }
+
+                break;
+            }
+
+            case TARGET_ENUM_UNITS_PARTY_WITHIN_CASTER_RANGE:
+            {
+                if (caster)
+                {
+                    float radius = 0.0f;
+                    if (spellInfo->EffectRadiusIndex[spellEffectIndex])
+                    {
+                        radius = GetSpellRadius(sSpellRadiusStore.LookupEntry(spellInfo->EffectRadiusIndex[spellEffectIndex]));
+                    }
+                    else
+                    {
+                        radius = GetSpellMaxRange(sSpellRangeStore.LookupEntry(spellInfo->rangeIndex));
+                    }
+
+                    Player* player = caster->GetBeneficiaryPlayer();
+                    Group* group = player ? player->GetGroup() : nullptr;
+                    if (group)
+                    {
+                        uint8 subgroup = player->GetSubGroup();
+                        for (GroupReference* itr = group->GetFirstMember(); itr != nullptr; itr = itr->next())
+                        {
+                            Player* target = itr->getSource();
+                            if (target && subgroup == target->GetSubGroup() && caster->CanAssistSpell(target, spellInfo))
+                            {
+                                if (target == caster || caster->IsWithinDistInMap(target, radius))
+                                {
+                                    targets.push_back(target);
+                                }
+
+                                if (Pet* pet = target->GetPet())
+                                {
+                                    if (pet == caster || caster->IsWithinDistInMap(pet, radius))
+                                    {
+                                        targets.push_back(pet);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Unit* ownerOrSelf = player ? player : caster->GetBeneficiary();
+                        if (ownerOrSelf == caster || caster->IsWithinDistInMap(ownerOrSelf, radius))
+                        {
+                            targets.push_back(ownerOrSelf);
+                        }
+
+                        if (Pet* pet = ownerOrSelf->GetPet())
+                        {
+                            if (pet == caster || caster->IsWithinDistInMap(pet, radius))
+                            {
+                                targets.push_back(pet);
+                            }
+                        }
+                    }
+                }
+
+                break;
+            }
+
+            default: 
+            {
+                if (defaultVictim)
+                {
+                    targets.push_back(defaultVictim);
+                }
+
+                break;
+            }
+        }
+
+        return targets;
     }
 }
