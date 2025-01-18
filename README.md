@@ -35,12 +35,13 @@ List of changes:
 		- Modified Efficiency talent to increase mana reduction up to 30%
 	- Priest
 		- Added Vampiric Touch (33439): https://www.wowhead.com/classic/spell=402668
+		- Added Void Plague (33441): https://www.wowhead.com/classic/spell=425204
 
 # Available Cores
 Classic
 
 # Version
-10
+11
 
 # How to install
 1. Follow the instructions in https://github.com/davidonete/cmangos-modules?tab=readme-ov-file#how-to-install
