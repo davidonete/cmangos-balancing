@@ -209,8 +209,13 @@ namespace cmangos_module
                         }
                     }
 
+                    // Remove GCD
+                    SpellEntry* newSpellEntry = const_cast<SpellEntry*>(sSpellTemplate.LookupEntry<SpellEntry>(originalSpell->m_spellInfo->Id));
+                    newSpellEntry->StartRecoveryCategory = 0;
+                    newSpellEntry->StartRecoveryTime = 0;
+
                     uint32 triggeredFlags = TRIGGERED_INSTANT_CAST | TRIGGERED_IGNORE_GCD | TRIGGERED_IGNORE_COSTS | TRIGGERED_IGNORE_COOLDOWNS;
-                    Spell* newSpell = new Spell(caster, originalSpell->m_spellInfo, triggeredFlags, caster->GetObjectGuid(), spell->m_spellInfo);
+                    Spell* newSpell = new Spell(caster, newSpellEntry, triggeredFlags, caster->GetObjectGuid(), spell->m_spellInfo);
                     SpellCastTargets targets;
                     targets.setUnitTarget(originalSpell->GetUnitTarget());
                     newSpell->SpellStart(&targets);
