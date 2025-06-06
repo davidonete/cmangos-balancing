@@ -55,6 +55,10 @@ UPDATE `spell_template` SET `EffectBasePoints1`= -7 WHERE `Id`= 19418;
 UPDATE `spell_template` SET `EffectBasePoints1`= -9 WHERE `Id`= 19419;
 UPDATE `spell_template` SET `EffectBasePoints1`= -11 WHERE `Id`= 19420;
 
+UPDATE `spell_template` SET `EffectBasePoints1`= 14  WHERE `Id`= 12286;
+UPDATE `spell_template` SET `EffectBasePoints1`= 24 WHERE `Id`= 12658;
+UPDATE `spell_template` SET `EffectBasePoints1`= 34 WHERE `Id`= 12659;
+
 SET @START_ITEM_ID := 25819;
 SET @END_ITEM_ID := @START_ITEM_ID + 15;
 DELETE FROM `item_template` WHERE `entry` BETWEEN  @START_ITEM_ID AND @END_ITEM_ID;

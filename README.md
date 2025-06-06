@@ -36,12 +36,14 @@ List of changes:
 	- Priest
 		- Added Vampiric Touch (33439): https://www.wowhead.com/classic/spell=402668
 		- Added Void Plague (33441): https://www.wowhead.com/classic/spell=425204
+	- Warrior
+		- Modified Improved Rend to increase damage from 35% to 600%
 
 # Available Cores
 Classic
 
 # Version
-11
+12
 
 # How to install
 1. Follow the instructions in https://github.com/davidonete/cmangos-modules?tab=readme-ov-file#how-to-install
