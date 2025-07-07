@@ -37,7 +37,7 @@ List of changes:
 		- Added Vampiric Touch (33439): https://www.wowhead.com/classic/spell=402668
 		- Added Void Plague (33441): https://www.wowhead.com/classic/spell=425204
 	- Warrior
-		- Modified Improved Rend to increase damage from 35% to 600%
+		- Modified Improved Rend to increase damage from 35% to 400%
 
 # Available Cores
 Classic

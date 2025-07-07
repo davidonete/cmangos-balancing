@@ -137,10 +137,10 @@ UPDATE `spell_template` SET `EffectBasePoints1`= -25 WHERE `Id`= 19419;
 UPDATE `spell_template` SET `EffectBasePoints1`= -31 WHERE `Id`= 19420;
 
 -- Warrior
--- Improved Rend upgrade from 35% to 500%
-UPDATE `spell_template` SET `EffectBasePoints1`= 165  WHERE `Id`= 12286;
-UPDATE `spell_template` SET `EffectBasePoints1`= 332 WHERE `Id`= 12658;
-UPDATE `spell_template` SET `EffectBasePoints1`= 499 WHERE `Id`= 12659;
+-- Improved Rend upgrade from 35% to 400%
+UPDATE `spell_template` SET `EffectBasePoints1`= 132 WHERE `Id`= 12286;
+UPDATE `spell_template` SET `EffectBasePoints1`= 265 WHERE `Id`= 12658;
+UPDATE `spell_template` SET `EffectBasePoints1`= 399 WHERE `Id`= 12659;
 
 -- Items
 SET @START_ITEM_ID := 25819;
