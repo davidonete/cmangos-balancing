@@ -43,7 +43,7 @@ List of changes:
 Classic
 
 # Version
-12
+13
 
 # How to install
 1. Follow the instructions in https://github.com/davidonete/cmangos-modules?tab=readme-ov-file#how-to-install
