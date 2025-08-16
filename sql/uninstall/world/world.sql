@@ -55,9 +55,20 @@ UPDATE `spell_template` SET `EffectBasePoints1`= -7 WHERE `Id`= 19418;
 UPDATE `spell_template` SET `EffectBasePoints1`= -9 WHERE `Id`= 19419;
 UPDATE `spell_template` SET `EffectBasePoints1`= -11 WHERE `Id`= 19420;
 
+UPDATE `spell_template` SET `CategoryRecoveryTime`= 60000 WHERE `Id`= 1510;
+UPDATE `spell_template` SET `CategoryRecoveryTime`= 60000 WHERE `Id`= 14294;
+UPDATE `spell_template` SET `CategoryRecoveryTime`= 60000 WHERE `Id`= 14295;
+
+UPDATE `spell_template` SET `EffectAmplitude1`= 10000 WHERE `Id`= 19579;
+UPDATE `spell_template` SET `EffectAmplitude1`= 10000 WHERE `Id`= 24529;
+
 UPDATE `spell_template` SET `EffectBasePoints1`= 14  WHERE `Id`= 12286;
 UPDATE `spell_template` SET `EffectBasePoints1`= 24 WHERE `Id`= 12658;
 UPDATE `spell_template` SET `EffectBasePoints1`= 34 WHERE `Id`= 12659;
+
+UPDATE `spell_template` SET `EffectBaseDice1`= 1, `EffectBasePoints1`= 0, `EffectAmplitude1`=6000  WHERE `Id`= 16488;
+UPDATE `spell_template` SET `EffectBaseDice1`= 1, `EffectBasePoints1`= 0, `EffectAmplitude1`=3000  WHERE `Id`= 16490;
+UPDATE `spell_template` SET `EffectBaseDice1`= 1, `EffectBasePoints1`= 0, `EffectAmplitude1`=2000  WHERE `Id`= 16491;
 
 SET @START_ITEM_ID := 25819;
 SET @END_ITEM_ID := @START_ITEM_ID + 15;

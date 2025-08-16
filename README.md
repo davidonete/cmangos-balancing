@@ -33,11 +33,14 @@ List of changes:
 	- Hunter
 		- Added Aspect of the Viper (33436): https://www.wowhead.com/classic/spell=34074
 		- Modified Efficiency talent to increase mana reduction up to 30%
+		- Remove Volley cooldown
+		- Reducing the tick time of Spirit Bond from 10 to 4 seconds
 	- Priest
 		- Added Vampiric Touch (33439): https://www.wowhead.com/classic/spell=402668
 		- Added Void Plague (33441): https://www.wowhead.com/classic/spell=425204
 	- Warrior
 		- Modified Improved Rend to increase damage from 35% to 400%
+		- Modified Blood Craze to increase amount from 3% to 9%
 
 # Available Cores
 Classic

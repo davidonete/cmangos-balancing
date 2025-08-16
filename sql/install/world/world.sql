@@ -136,11 +136,25 @@ UPDATE `spell_template` SET `EffectBasePoints1`= -19 WHERE `Id`= 19418;
 UPDATE `spell_template` SET `EffectBasePoints1`= -25 WHERE `Id`= 19419;
 UPDATE `spell_template` SET `EffectBasePoints1`= -31 WHERE `Id`= 19420;
 
+-- Remove cooldown from Volley
+UPDATE `spell_template` SET `CategoryRecoveryTime`= 0 WHERE `Id`= 1510;
+UPDATE `spell_template` SET `CategoryRecoveryTime`= 0 WHERE `Id`= 14294;
+UPDATE `spell_template` SET `CategoryRecoveryTime`= 0 WHERE `Id`= 14295;
+
+-- Reducing the tick time of Spirit Bond from 10 to 4 seconds
+UPDATE `spell_template` SET `EffectAmplitude1`= 4000 WHERE `Id`= 19579;
+UPDATE `spell_template` SET `EffectAmplitude1`= 4000 WHERE `Id`= 24529;
+
 -- Warrior
 -- Improved Rend upgrade from 35% to 400%
 UPDATE `spell_template` SET `EffectBasePoints1`= 132 WHERE `Id`= 12286;
 UPDATE `spell_template` SET `EffectBasePoints1`= 265 WHERE `Id`= 12658;
 UPDATE `spell_template` SET `EffectBasePoints1`= 399 WHERE `Id`= 12659;
+
+-- Blood Craze upgrade from 3% to 9%
+UPDATE `spell_template` SET `EffectBaseDice1`= 0, `EffectBasePoints1`= 1, `EffectAmplitude1`=2000  WHERE `Id`= 16488;
+UPDATE `spell_template` SET `EffectBaseDice1`= 0, `EffectBasePoints1`= 2, `EffectAmplitude1`=2000  WHERE `Id`= 16490;
+UPDATE `spell_template` SET `EffectBaseDice1`= 0, `EffectBasePoints1`= 3, `EffectAmplitude1`=2000  WHERE `Id`= 16491;
 
 -- Items
 SET @START_ITEM_ID := 25819;
