@@ -58,6 +58,12 @@ namespace cmangos_module
                             break;
                         }
 
+                        case ExtendedSpellEffects::SPELL_EFFECT_HEAL_PCT: 
+                        {
+                            HandleHealPct(spell, spellEffectIndex, caster, victims);
+                            break;
+                        }
+
                         default: break;
                     }
                 }
@@ -238,6 +244,17 @@ namespace cmangos_module
         for (Unit* victim : victims)
         {
             caster->EnergizeBySpell(victim, spellInfo, energizeAmount, power);
+        }
+    }
+
+    void BalancingModule::HandleHealPct(const Spell* spell, uint8 spellEffectIndex, Unit* caster, const std::vector<Unit*>& victims)
+    {
+        const int32 pct = spell->m_spellInfo->EffectBasePoints[spellEffectIndex];
+
+        for (Unit* victim : victims)
+        {
+            const int32 healAmount = victim->GetMaxHealth() * pct / 100;
+            caster->DealHeal(victim, healAmount, spell->m_spellInfo);
         }
     }
 

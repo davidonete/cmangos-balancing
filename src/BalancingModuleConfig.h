@@ -29,10 +29,13 @@ namespace cmangos_module
                                                     // - EffectBasePoints(1/2/3): How effective is the cloned spell in percentage (100 being the exact amount from the original)
                                                     // - EffectTriggerSpell(1/2/3): The spell id aura modifier to add for this cast (e.g. increase damage mod)
 
-        SPELL_EFFECT_ENERGIZE_BY_DAMAGE_DONE  = 5,  // The spell will give mana back based on the damage done
-                                                    // - EffectBasePoints(1/2/3): Pct of mana given based on the total damage done
+        SPELL_EFFECT_ENERGIZE_BY_DAMAGE_DONE  = 5,  // The spell will give power back based on the damage done
+                                                    // - EffectBasePoints(1/2/3): Pct of power given based on the total damage done
                                                     // - EffectItemType(1/2/3): The type of power to give back (POWER_MANA, POWER_HEALTH, POWER_ENERGY, ...)
-                                                    // - EffectMultipleValua(1/2/3): Specify if you want to override the implicit targets
+                                                    // - EffectMultipleValue(1/2/3): Specify if you want to override the implicit targets
+
+        SPELL_EFFECT_HEAL_PCT                 = 6,  // The spell will give a pct of life back based on total health
+                                                    // - EffectBasePoints(1/2/3): Pct of health given based on the total health
 
         MAX_SPELL_EFFECTS
     };

@@ -102,6 +102,16 @@ UPDATE `spell_template` SET `SpellFamilyFlags` = 0 WHERE Id = 20185 OR Id = 2034
 -- Exorcism can be casted on any target
 UPDATE `spell_template` SET `TargetCreatureType` = 0 WHERE Id = 879 OR Id = 5614 OR Id = 5615 OR Id = 10312 OR Id = 10313 OR Id = 10314;
 
+-- Seal and Judgement of light change flat number to %
+UPDATE `spell_template` SET `Effect1` = 122, `EffectMiscValue1` = 6, `EffectBasePoints1` = 1 WHERE Id = 20167;
+UPDATE `spell_template` SET `Effect1` = 122, `EffectMiscValue1` = 6, `EffectBasePoints1` = 1 WHERE Id = 20267;
+UPDATE `spell_template` SET `Effect1` = 122, `EffectMiscValue1` = 6, `EffectBasePoints1` = 2 WHERE Id = 20333;
+UPDATE `spell_template` SET `Effect1` = 122, `EffectMiscValue1` = 6, `EffectBasePoints1` = 1 WHERE Id = 20341;
+UPDATE `spell_template` SET `Effect1` = 122, `EffectMiscValue1` = 6, `EffectBasePoints1` = 2 WHERE Id = 20334;
+UPDATE `spell_template` SET `Effect1` = 122, `EffectMiscValue1` = 6, `EffectBasePoints1` = 2 WHERE Id = 20342;
+UPDATE `spell_template` SET `Effect1` = 122, `EffectMiscValue1` = 6, `EffectBasePoints1` = 3 WHERE Id = 20340;
+UPDATE `spell_template` SET `Effect1` = 122, `EffectMiscValue1` = 6, `EffectBasePoints1` = 2 WHERE Id = 20343;
+
 -- Druid
 -- Natural Shapeshifter upgrade from 30% to 60%
 UPDATE `spell_template` SET `EffectBasePoints1`= -21 WHERE `Id` = 16833;

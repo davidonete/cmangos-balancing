@@ -25,7 +25,8 @@ namespace cmangos_module
         void HandleRemoveAura(const Spell* spell, uint8 spellEffectIndex, Unit* caster, const std::vector<Unit*>& victims);
         void HandleCloneSpell(const Spell* spell, uint8 spellEffectIndex, Unit* caster);
         void HandleEnergizeByDamageDone(const uint32 damage, const SpellEntry* spellInfo, uint8 spellEffectIndex, Unit* caster, const std::vector<Unit*>& victims);
-    
+        void HandleHealPct(const Spell* spell, uint8 spellEffectIndex, Unit* caster, const std::vector<Unit*>& victims);
+
         std::vector<Unit*> GetImplicitTargets(const uint32 targetMode, const SpellEntry* spellInfo, uint8 spellEffectIndex, Unit* caster, Unit* defaultVictim) const;
     };
 }

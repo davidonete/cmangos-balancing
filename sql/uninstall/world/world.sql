@@ -30,6 +30,15 @@ UPDATE `spell_template` SET `SpellFamilyFlags` = 536870912 WHERE Id = 20188 OR I
 
 UPDATE `spell_template` SET `TargetCreatureType` = 36 WHERE Id = 879 OR Id = 5614 OR Id = 5615 OR Id = 10312 OR Id = 10313 OR Id = 10314;
 
+UPDATE `spell_template` SET `Effect1` = 10, `EffectMiscValue1` = 0, `EffectBasePoints1` = 38 WHERE Id = 20167;
+UPDATE `spell_template` SET `Effect1` = 10, `EffectMiscValue1` = 0, `EffectBasePoints1` = 24 WHERE Id = 20267;
+UPDATE `spell_template` SET `Effect1` = 10, `EffectMiscValue1` = 0, `EffectBasePoints1` = 52 WHERE Id = 20333;
+UPDATE `spell_template` SET `Effect1` = 10, `EffectMiscValue1` = 0, `EffectBasePoints1` = 33 WHERE Id = 20341;
+UPDATE `spell_template` SET `Effect1` = 10, `EffectMiscValue1` = 0, `EffectBasePoints1` = 75 WHERE Id = 20334;
+UPDATE `spell_template` SET `Effect1` = 10, `EffectMiscValue1` = 0, `EffectBasePoints1` = 48 WHERE Id = 20342;
+UPDATE `spell_template` SET `Effect1` = 10, `EffectMiscValue1` = 0, `EffectBasePoints1` = 93 WHERE Id = 20340;
+UPDATE `spell_template` SET `Effect1` = 10, `EffectMiscValue1` = 0, `EffectBasePoints1` = 60 WHERE Id = 20343;
+
 UPDATE `spell_template` SET `EffectBasePoints1`= -11 WHERE `Id` = 16833;
 UPDATE `spell_template` SET `EffectBasePoints1`= -21 WHERE `Id` = 16834;
 UPDATE `spell_template` SET `EffectBasePoints1`= -31 WHERE `Id` = 16835;

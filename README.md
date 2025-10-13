@@ -14,6 +14,7 @@ List of changes:
 		- Modified Hammer of Wrath spell to remove cast time
 		- Modified Judgement spells so different debuffs can be placed on the same target
 		- Modified Exorcism so it can be casted on any target
+		- Modified Seal of Light and Judgement of Light to heal for a % of max health
 	- Druid
 		- Added Starfall (33397): https://www.wowhead.com/classic/spell=439748
 		- Added Sunfire (33399): https://www.wowhead.com/classic/spell=414684
@@ -46,7 +47,7 @@ List of changes:
 Classic
 
 # Version
-13
+15
 
 # How to install
 1. Follow the instructions in https://github.com/davidonete/cmangos-modules?tab=readme-ov-file#how-to-install
