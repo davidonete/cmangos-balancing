@@ -52,6 +52,10 @@ UPDATE `spell_template` SET `SpellFamilyName`= 0, `SpellFamilyFlags`= 0 WHERE `I
 
 UPDATE `spell_template` SET `AttributesEx2`=0, `Stances`=0, `StancesNot`=1073741824, `DurationIndex`=29 WHERE `Id`=5570 OR `Id`=24974 OR `Id`=24975 OR `Id`=24976 OR `Id`=24977;
 
+UPDATE `spell_template` SET `CategoryRecoveryTime`= 60000 WHERE `Id`= 16914;
+UPDATE `spell_template` SET `CategoryRecoveryTime`= 60000 WHERE `Id`= 17401;
+UPDATE `spell_template` SET `CategoryRecoveryTime`= 60000 WHERE `Id`= 17402;
+
 UPDATE `spell_template` SET `EffectBasePoints1`= -3 WHERE `Id`= 16039;
 UPDATE `spell_template` SET `EffectBasePoints1`= -5 WHERE `Id`= 16109;
 UPDATE `spell_template` SET `EffectBasePoints1`= -7 WHERE `Id`= 16110;

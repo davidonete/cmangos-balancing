@@ -130,6 +130,11 @@ UPDATE `spell_template` SET `SpellFamilyName`= 7, `SpellFamilyFlags`= 4096 WHERE
 -- Insect swarm increase duration to 20 seconds and allow being casted in moonkin form
 UPDATE `spell_template` SET `AttributesEx2`=524288, `Stances`=1073741824, `StancesNot`=0, `DurationIndex`=18 WHERE `Id`=5570 OR `Id`=24974 OR `Id`=24975 OR `Id`=24976 OR `Id`=24977;
 
+-- Remove cooldown from Hurricane
+UPDATE `spell_template` SET `CategoryRecoveryTime`= 0 WHERE `Id`= 16914;
+UPDATE `spell_template` SET `CategoryRecoveryTime`= 0 WHERE `Id`= 17401;
+UPDATE `spell_template` SET `CategoryRecoveryTime`= 0 WHERE `Id`= 17402;
+
 -- Shaman
 -- Convection upgrade from 10% to 30%
 UPDATE `spell_template` SET `EffectBasePoints1`= -7  WHERE `Id`= 16039;
