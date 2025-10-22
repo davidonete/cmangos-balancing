@@ -104,6 +104,126 @@ namespace cmangos_module
         }
     }
 
+    bool RollSpellCritOutcome(Unit* caster, const Unit* victim, SpellSchoolMask schoolMask, const SpellEntry* spell)
+    {
+        if (!caster || !caster->CanCrit(schoolMask))
+        {
+            return false;
+        }
+
+        if (spell->DmgClass == SPELL_DAMAGE_CLASS_MELEE && victim->IsPlayer() && !victim->IsStandState())
+        {
+            return true;
+        }
+
+        return roll_chance_combat(caster->CalculateSpellCritChance(victim, schoolMask, spell));
+    } 
+
+    void CalculateSpellDamage(SpellNonMeleeDamage* spellDamageInfo, int32 damage, SpellEntry const* spellInfo, SpellEffectIndex effectIndex, WeaponAttackType attackType)
+    {
+        SpellSchoolMask damageSchoolMask = GetSchoolMask(spellDamageInfo->school);
+        Unit* caster = static_cast<Unit*>(spellDamageInfo->attacker);
+        Unit* pVictim = spellDamageInfo->target;
+
+        if (damage < 0)
+        {
+            return;
+        }
+
+        if (!pVictim)
+        {
+            return;
+        }
+
+        // Check spellInfo crit chance
+        bool crit = RollSpellCritOutcome(caster, pVictim, damageSchoolMask, spellInfo);
+
+        // damage bonus (per damage class)
+        switch (spellInfo->DmgClass)
+        {
+            // Melee and Ranged Spells
+            case SPELL_DAMAGE_CLASS_RANGED:
+            case SPELL_DAMAGE_CLASS_MELEE:
+            {
+                // Calculate damage bonus
+                damage = caster->MeleeDamageBonusDone(pVictim, damage, attackType, damageSchoolMask, spellInfo, effectIndex, SPELL_DIRECT_DAMAGE);
+                damage = pVictim->MeleeDamageBonusTaken(caster, damage, attackType, damageSchoolMask, spellInfo, effectIndex, SPELL_DIRECT_DAMAGE);
+                break;
+            }
+            
+            // Magical Attacks
+            case SPELL_DAMAGE_CLASS_NONE:
+            case SPELL_DAMAGE_CLASS_MAGIC:
+            {
+                // Calculate damage bonus
+                damage = caster->SpellDamageBonusDone(pVictim, damageSchoolMask, spellInfo, effectIndex, damage, SPELL_DIRECT_DAMAGE);
+                damage = pVictim->SpellDamageBonusTaken(caster, damageSchoolMask, spellInfo, effectIndex, damage, SPELL_DIRECT_DAMAGE);
+                break;
+            }
+        }
+
+        // if crit add critical bonus
+        if (crit && !spellInfo->HasAttribute(SPELL_ATTR_EX3_IGNORE_CASTER_MODIFIERS))
+        {
+            spellDamageInfo->HitInfo |= SPELL_HIT_TYPE_CRIT;
+            damage = caster->CalculateCritAmount(pVictim, damage, spellInfo);
+        }
+
+        // damage mitigation
+        if (damage > 0)
+        {
+            // physical damage => armor
+            if (damageSchoolMask & SPELL_SCHOOL_MASK_NORMAL)
+            {
+                damage = caster->CalcArmorReducedDamage(caster, pVictim, damage);
+            }
+        }
+        else
+        {
+            damage = 0;
+        }
+
+        spellDamageInfo->damage = damage;
+    }
+
+    bool BalancingModule::OnPeriodicTick(Aura* aura)
+    {
+        if (GetConfig()->enabled)
+        {
+            Unit* caster = aura ? aura->GetCaster() : nullptr;
+            if (caster)
+            {
+                bool canCrit = false;
+                const SpellEntry* victimSpellInfo = aura->GetSpellProto();
+                for (Aura* casterAura : caster->GetAurasByType(static_cast<AuraType>(SPELL_AURA_EXTENDED)))
+                {
+                    const SpellEntry* auraSpellInfo = casterAura->GetSpellProto();
+                    for (uint8 spellEffectIndex = 0; spellEffectIndex < MAX_EFFECT_INDEX; spellEffectIndex++)
+                    {
+                        const ExtendedSpellEffects spellEffect = (ExtendedSpellEffects)(auraSpellInfo->EffectMiscValue[spellEffectIndex]);
+                        if (spellEffect == ExtendedSpellEffects::SPELL_EFFECT_PERIODIC_CRIT)
+                        {
+                            if (victimSpellInfo->IsFitToFamily(SpellFamily(auraSpellInfo->SpellFamilyName), auraSpellInfo->SpellFamilyFlags))
+                            {
+                                canCrit = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                if (canCrit)
+                {
+                    HandlePeriodicSpellCrit(aura);
+                    aura->OnPeriodicTickEnd();
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     void BalancingModule::HandleRefreshAura(const Spell* spell, uint8 spellEffectIndex, Unit* caster, const std::vector<Unit*>& victims)
     {
         const uint32 spellID = spell->m_spellInfo->EffectTriggerSpell[spellEffectIndex];
@@ -255,6 +375,90 @@ namespace cmangos_module
         {
             const int32 healAmount = victim->GetMaxHealth() * pct / 100;
             caster->DealHeal(victim, healAmount, spell->m_spellInfo);
+        }
+    }
+
+    void BalancingModule::HandlePeriodicSpellCrit(Aura* aura) 
+    {
+        Unit* target = aura->GetTarget();
+        Unit* caster = aura->GetCaster();
+
+        if (target && target->IsAlive())
+        {
+            const Modifier* auraModifier = aura->GetModifier();
+            const SpellEntry* spellProto = aura->GetSpellProto();
+
+            uint32 absorb = 0;
+            int32 resist = 0;
+
+            uint32 amount = (auraModifier->m_amount > 0 ? uint32(auraModifier->m_amount) : 0);
+
+            uint32 pdamage = amount;
+            aura->OnPeriodicCalculateAmount(pdamage);
+
+            if (spellProto->Effect[aura->GetEffIndex()] == SPELL_EFFECT_PERSISTENT_AREA_AURA)
+            {
+                if (!caster)
+                {
+                    sLog.outCustomLog("Spell ID: %u Caster guid %lu", spellProto->Id, aura->GetCasterGuid().GetRawValue());
+                    MANGOS_ASSERT(caster);
+                }
+                else if (Unit::SpellHitResult(caster, target, spellProto, (1 << aura->GetEffIndex()), false) != SPELL_MISS_NONE)
+                {
+                    return;
+                }
+            }
+
+            if (!spellProto->HasAttribute(SPELL_ATTR_NO_IMMUNITIES))
+            {
+                if (target->IsImmuneToDamage(GetSpellSchoolMask(spellProto)))
+                {
+                    Unit::SendSpellOrDamageImmune(aura->GetCasterGuid(), target, spellProto->Id);
+                    return;
+                }
+            }
+
+            bool isNotBleed = GetEffectMechanic(spellProto, aura->GetEffIndex()) != MECHANIC_BLEED;
+            if ((spellProto->DmgClass == SPELL_DAMAGE_CLASS_NONE && isNotBleed) || spellProto->DmgClass == SPELL_DAMAGE_CLASS_MAGIC)
+            {
+                pdamage = target->SpellDamageBonusTaken(caster, GetSpellSchoolMask(spellProto), spellProto, aura->GetEffIndex(), pdamage, DOT, aura->GetStackAmount());
+            }
+            else
+            {
+                WeaponAttackType attackType = GetWeaponAttackType(spellProto);
+                pdamage = target->MeleeDamageBonusTaken(caster, pdamage, attackType, GetSpellSchoolMask(spellProto), spellProto, aura->GetEffIndex(), DOT, aura->GetStackAmount());
+            }
+
+            target->CalculateDamageAbsorbAndResist(caster, GetSpellSchoolMask(spellProto), DOT, pdamage, &absorb, &resist, IsReflectableSpell(spellProto),
+                                                   IsResistableSpell(spellProto));
+
+            Unit::DealDamageMods(caster, target, pdamage, &absorb, DOT, spellProto);
+
+            // Set trigger flag
+            uint32 procAttacker = PROC_FLAG_DEAL_HARMFUL_PERIODIC;
+            uint32 procVictim = PROC_FLAG_TAKE_HARMFUL_PERIODIC;
+
+            const uint32 bonus = (resist < 0 ? uint32(std::abs(resist)) : 0);
+            pdamage += bonus;
+            const uint32 malus = (resist > 0 ? (absorb + uint32(resist)) : absorb);
+            pdamage = (pdamage <= malus ? 0 : (pdamage - malus));
+
+            SpellNonMeleeDamage spellDamageInfo(caster, target, spellProto->Id, SpellSchools(spellProto->School));
+            CalculateSpellDamage(&spellDamageInfo, pdamage, spellProto, EFFECT_INDEX_0, BASE_ATTACK);
+            pdamage = spellDamageInfo.damage;
+
+            SpellPeriodicAuraLogInfo pInfo(aura, pdamage, absorb, resist, 0.0f);
+            target->SendSpellNonMeleeDamageLog(&spellDamageInfo);
+
+            if (pdamage > 0)
+            {
+                procVictim |= PROC_FLAG_TAKE_ANY_DAMAGE;
+            }
+
+            CleanDamage cleanDamage(pdamage, BASE_ATTACK, spellDamageInfo.HitInfo & SPELL_HIT_TYPE_CRIT ? MELEE_HIT_CRIT : MELEE_HIT_NORMAL, pdamage || absorb);
+            Unit::DealDamage(caster, target, pdamage, &cleanDamage, DOT, GetSpellSchoolMask(spellProto), spellProto, true);
+
+            Unit::ProcDamageAndSpell(ProcSystemArguments(caster, target, procAttacker, procVictim, PROC_EX_NORMAL_HIT, pdamage, absorb, BASE_ATTACK, spellProto));
         }
     }
 

@@ -44,12 +44,14 @@ List of changes:
 		- Modified Improved Rend to increase damage from 35% to 400%
 		- Modified Blood Craze to increase amount from 3% to 9%
 		- Modified Bloodthirst to heal for a % of max health
+	- Warlock
+		- Added Pandemic (33443): https://www.wowhead.com/classic/spell=427712
 
 # Available Cores
 Classic
 
 # Version
-17
+18
 
 # How to install
 1. Follow the instructions in https://github.com/davidonete/cmangos-modules?tab=readme-ov-file#how-to-install

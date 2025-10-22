@@ -37,6 +37,9 @@ namespace cmangos_module
         SPELL_EFFECT_HEAL_PCT                 = 6,  // The spell will give a pct of life back based on total health
                                                     // - EffectBasePoints(1/2/3): Pct of health given based on the total health
 
+        SPELL_EFFECT_PERIODIC_CRIT            = 7,  // If the periodic spells for the caster can crit
+                                                    // - SpellFamilyName: The spell family name of the auras to crit
+                                                    // - SpellFamilyFlags: The spell family mask of the auras to crit
         MAX_SPELL_EFFECTS
     };
 
