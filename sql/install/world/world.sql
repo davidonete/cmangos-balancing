@@ -171,6 +171,16 @@ UPDATE `spell_template` SET `EffectBaseDice1`= 0, `EffectBasePoints1`= 1, `Effec
 UPDATE `spell_template` SET `EffectBaseDice1`= 0, `EffectBasePoints1`= 2, `EffectAmplitude1`=2000  WHERE `Id`= 16490;
 UPDATE `spell_template` SET `EffectBaseDice1`= 0, `EffectBasePoints1`= 3, `EffectAmplitude1`=2000  WHERE `Id`= 16491;
 
+-- Bloodthirst change flat number to %
+UPDATE `spell_template` SET `Effect1` = 122, `EffectMiscValue1` = 6, `EffectBasePoints1` = 1 WHERE Id = 23880;
+UPDATE `spell_template` SET `Effect1` = 122, `EffectMiscValue1` = 6, `EffectBasePoints1` = 1 WHERE Id = 23889;
+UPDATE `spell_template` SET `Effect1` = 122, `EffectMiscValue1` = 6, `EffectBasePoints1` = 2 WHERE Id = 23890;
+UPDATE `spell_template` SET `Effect1` = 122, `EffectMiscValue1` = 6, `EffectBasePoints1` = 2 WHERE Id = 23891;
+UPDATE `spell_template` SET `ProcCharges` = 1 WHERE Id = 23885;
+UPDATE `spell_template` SET `ProcCharges` = 2 WHERE Id = 23886;
+UPDATE `spell_template` SET `ProcCharges` = 2 WHERE Id = 23887;
+UPDATE `spell_template` SET `ProcCharges` = 3 WHERE Id = 23888;
+
 -- Items
 SET @START_ITEM_ID := 25819;
 SET @END_ITEM_ID := @START_ITEM_ID + 15;

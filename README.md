@@ -43,12 +43,13 @@ List of changes:
 	- Warrior
 		- Modified Improved Rend to increase damage from 35% to 400%
 		- Modified Blood Craze to increase amount from 3% to 9%
+		- Modified Bloodthirst to heal for a % of max health
 
 # Available Cores
 Classic
 
 # Version
-16
+17
 
 # How to install
 1. Follow the instructions in https://github.com/davidonete/cmangos-modules?tab=readme-ov-file#how-to-install

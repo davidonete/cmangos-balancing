@@ -83,6 +83,15 @@ UPDATE `spell_template` SET `EffectBaseDice1`= 1, `EffectBasePoints1`= 0, `Effec
 UPDATE `spell_template` SET `EffectBaseDice1`= 1, `EffectBasePoints1`= 0, `EffectAmplitude1`=3000  WHERE `Id`= 16490;
 UPDATE `spell_template` SET `EffectBaseDice1`= 1, `EffectBasePoints1`= 0, `EffectAmplitude1`=2000  WHERE `Id`= 16491;
 
+UPDATE `spell_template` SET `Effect1` = 10, `EffectMiscValue1` = 0, `EffectBasePoints1` = 9 WHERE Id = 23880;
+UPDATE `spell_template` SET `Effect1` = 10, `EffectMiscValue1` = 0, `EffectBasePoints1` = 12 WHERE Id = 23889;
+UPDATE `spell_template` SET `Effect1` = 10, `EffectMiscValue1` = 0, `EffectBasePoints1` = 16 WHERE Id = 23890;
+UPDATE `spell_template` SET `Effect1` = 10, `EffectMiscValue1` = 0, `EffectBasePoints1` = 19 WHERE Id = 23891;
+UPDATE `spell_template` SET `ProcCharges` = 5 WHERE Id = 23885;
+UPDATE `spell_template` SET `ProcCharges` = 5 WHERE Id = 23886;
+UPDATE `spell_template` SET `ProcCharges` = 5 WHERE Id = 23887;
+UPDATE `spell_template` SET `ProcCharges` = 5 WHERE Id = 23888;
+
 SET @START_ITEM_ID := 25819;
 SET @END_ITEM_ID := @START_ITEM_ID + 15;
 DELETE FROM `item_template` WHERE `entry` BETWEEN  @START_ITEM_ID AND @END_ITEM_ID;
