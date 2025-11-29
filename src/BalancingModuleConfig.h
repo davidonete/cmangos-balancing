@@ -5,6 +5,9 @@ namespace cmangos_module
 {
     #define SPELL_EFFECT_EXTENDED 122
     #define SPELL_AURA_EXTENDED 164
+    #define NEW_BALANCING_SPELL_START 33393
+    #define NEW_BALANCING_SPELL_ICE_LANCE 33445
+    #define NEW_BALANCING_SPELL_END NEW_BALANCING_SPELL_START + 53
 
     /*
     To make the extended spell effects work the spell must be configured with the following parameters

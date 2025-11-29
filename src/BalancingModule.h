@@ -20,6 +20,7 @@ namespace cmangos_module
         void OnCast(Spell* spell, Unit* caster, Unit* victim) override;
         void OnProc(const ProcExecutionData& data, SpellAuraProcResult& procResult) override;
         bool OnPeriodicTick(Aura* aura) override;
+        bool OnGetSpellRank(const Unit* unit, const SpellEntry* spellInfo, uint32& outSpellRank) override;
 
         void HandleRefreshAura(const Spell* spell, uint8 spellEffectIndex, Unit* caster, const std::vector<Unit*>& victims);
         void HandleRefreshAuraByFamilyMask(const Spell* spell, uint8 spellEffectIndex, Unit* caster, const std::vector<Unit*>& victims);

@@ -23,11 +23,11 @@ namespace cmangos_module
         if (GetConfig()->enabled && spell)
         {
             const SpellEntry* spellInfo = spell->m_spellInfo;
+            Unit* spellTarget = victim ? victim : spell->GetUnitTarget();
             for (uint8 spellEffectIndex = 0; spellEffectIndex < MAX_EFFECT_INDEX; spellEffectIndex++)
             {
                 if (spellInfo->Effect[spellEffectIndex] == SPELL_EFFECT_EXTENDED)
                 {
-                    Unit* spellTarget = victim ? victim : spell->GetUnitTarget();
                     const uint32 targetMode = spellInfo->EffectImplicitTargetA[spellEffectIndex];
                     std::vector<Unit*> victims = GetImplicitTargets(targetMode, spellInfo, spellEffectIndex, caster, spellTarget);
 
@@ -66,6 +66,14 @@ namespace cmangos_module
 
                         default: break;
                     }
+                }
+            }
+
+            if (spellInfo->Id == NEW_BALANCING_SPELL_ICE_LANCE)
+            {
+                if (spellTarget && spellTarget->isFrozen())
+                {
+                    spell->SetDamageDoneModifier(3.f, EFFECT_INDEX_0);
                 }
             }
         }
@@ -218,6 +226,21 @@ namespace cmangos_module
                     aura->OnPeriodicTickEnd();
                     return true;
                 }
+            }
+        }
+
+        return false;
+    }
+
+    bool BalancingModule::OnGetSpellRank(const Unit* unit, const SpellEntry* spellInfo, uint32& outSpellRank)
+    {
+        if (GetConfig()->enabled && unit)
+        {
+            if (spellInfo->Id >= NEW_BALANCING_SPELL_START && spellInfo->Id <= NEW_BALANCING_SPELL_END)
+            {
+                // Multiply by 5 because in WorldObject::CalculateSpellEffectValue is divided by 5
+                outSpellRank = unit->GetLevel() * 5;
+                return true;
             }
         }
 

@@ -46,12 +46,14 @@ List of changes:
 		- Modified Bloodthirst to heal for a % of max health
 	- Warlock
 		- Added Pandemic (33443): https://www.wowhead.com/classic/spell=427712
+	- Mage
+		- Added Ice Lance (33445): https://www.wowhead.com/tbc/es/spell=30455
 
 # Available Cores
 Classic
 
 # Version
-18
+19
 
 # How to install
 1. Follow the instructions in https://github.com/davidonete/cmangos-modules?tab=readme-ov-file#how-to-install
