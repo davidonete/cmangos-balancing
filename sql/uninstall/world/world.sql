@@ -56,6 +56,10 @@ UPDATE `spell_template` SET `CategoryRecoveryTime`= 60000 WHERE `Id`= 16914;
 UPDATE `spell_template` SET `CategoryRecoveryTime`= 60000 WHERE `Id`= 17401;
 UPDATE `spell_template` SET `CategoryRecoveryTime`= 60000 WHERE `Id`= 17402;
 
+UPDATE `spell_template` SET `EffectBasePoints1`= -4 WHERE `Id`= 16845;
+UPDATE `spell_template` SET `EffectBasePoints1`= -7 WHERE `Id`= 16846;
+UPDATE `spell_template` SET `EffectBasePoints1`= -10 WHERE `Id`= 16847;
+
 UPDATE `spell_template` SET `EffectBasePoints1`= -3 WHERE `Id`= 16039;
 UPDATE `spell_template` SET `EffectBasePoints1`= -5 WHERE `Id`= 16109;
 UPDATE `spell_template` SET `EffectBasePoints1`= -7 WHERE `Id`= 16110;
