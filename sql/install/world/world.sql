@@ -148,6 +148,18 @@ UPDATE `spell_template` SET `EffectBasePoints1`= -11 WHERE `Id`= 16845;
 UPDATE `spell_template` SET `EffectBasePoints1`= -21 WHERE `Id`= 16846;
 UPDATE `spell_template` SET `EffectBasePoints1`= -31 WHERE `Id`= 16847;
 
+-- Reflection increased from 10% to 30%
+UPDATE `spell_template` SET `EffectBasePoints1`= 11 WHERE `Id`= 17106;
+UPDATE `spell_template` SET `EffectBasePoints1`= 21 WHERE `Id`= 17107;
+UPDATE `spell_template` SET `EffectBasePoints1`= 31 WHERE `Id`= 17108;
+
+-- Tranquil Spirit increased from 10% to 30% and add Rejuvenation and Regrowth
+UPDATE `spell_template` SET `EffectBasePoints1`= -7, `EffectItemType1`= 240 WHERE `Id`= 24968;
+UPDATE `spell_template` SET `EffectBasePoints1`= -13, `EffectItemType1`= 240 WHERE `Id`= 24969;
+UPDATE `spell_template` SET `EffectBasePoints1`= -19, `EffectItemType1`= 240 WHERE `Id`= 24970;
+UPDATE `spell_template` SET `EffectBasePoints1`= -25, `EffectItemType1`= 240 WHERE `Id`= 24971;
+UPDATE `spell_template` SET `EffectBasePoints1`= -31, `EffectItemType1`= 240 WHERE `Id`= 24972;
+
 -- Shaman
 -- Convection upgrade from 10% to 30%
 UPDATE `spell_template` SET `EffectBasePoints1`= -7  WHERE `Id`= 16039;

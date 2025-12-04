@@ -60,6 +60,16 @@ UPDATE `spell_template` SET `EffectBasePoints1`= -4 WHERE `Id`= 16845;
 UPDATE `spell_template` SET `EffectBasePoints1`= -7 WHERE `Id`= 16846;
 UPDATE `spell_template` SET `EffectBasePoints1`= -10 WHERE `Id`= 16847;
 
+UPDATE `spell_template` SET `EffectBasePoints1`= 4 WHERE `Id`= 17106;
+UPDATE `spell_template` SET `EffectBasePoints1`= 8 WHERE `Id`= 17107;
+UPDATE `spell_template` SET `EffectBasePoints1`= 11 WHERE `Id`= 17108;
+
+UPDATE `spell_template` SET `EffectBasePoints1`= -3, `EffectItemType1`= 160 WHERE `Id`= 24968;
+UPDATE `spell_template` SET `EffectBasePoints1`= -5, `EffectItemType1`= 160 WHERE `Id`= 24969;
+UPDATE `spell_template` SET `EffectBasePoints1`= -7, `EffectItemType1`= 160 WHERE `Id`= 24970;
+UPDATE `spell_template` SET `EffectBasePoints1`= -9, `EffectItemType1`= 160 WHERE `Id`= 24971;
+UPDATE `spell_template` SET `EffectBasePoints1`= -11, `EffectItemType1`= 160 WHERE `Id`= 24972;
+
 UPDATE `spell_template` SET `EffectBasePoints1`= -3 WHERE `Id`= 16039;
 UPDATE `spell_template` SET `EffectBasePoints1`= -5 WHERE `Id`= 16109;
 UPDATE `spell_template` SET `EffectBasePoints1`= -7 WHERE `Id`= 16110;

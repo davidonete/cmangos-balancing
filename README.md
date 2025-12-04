@@ -27,6 +27,8 @@ List of changes:
 		- Modified Insect Swarm so it can now be casted in moonkin form and increase duration to 20 seconds
 		- Remove Hurricane cooldown
 		- Modify Moonglow to increase amount from 10% to 30%
+		- Modify Reflection to increase amount from 10% to 30%
+		- Modify Tranquil Spirit to increase amount from 10% to 30% and add rejuvenation and regrowth to the effect
 	- Shaman
 		- Added Maelstrom Weapon (33413, 33414): https://www.wowhead.com/classic/spell=408498
 		- Added Lava Burst (33423, 33424): https://www.wowhead.com/classic/spell=408490
@@ -54,7 +56,7 @@ List of changes:
 Classic
 
 # Version
-20
+21
 
 # How to install
 1. Follow the instructions in https://github.com/davidonete/cmangos-modules?tab=readme-ov-file#how-to-install
